@@ -1,0 +1,11 @@
+extends layout.pug
+
+include utils.pug
+block content
+  +validationErrorSummary(errors)
+  form(method='post' action='/login')
+    input(type='hidden' name='_csrf' value=csrfToken)
+    +field('Email', 'emailAddress', '', 'email')
+    +field('Password', 'password', '', 'password')
+    button(type='submit') Log In!
+    a(href='/signup') You don't have an account? Sign up!
