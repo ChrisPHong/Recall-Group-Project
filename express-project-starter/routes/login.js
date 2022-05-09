@@ -1,0 +1,64 @@
+const express = require('express');
+const router = express.Router();
+const db = require('../db/models');
+const { asyncHandler, csrfProtection, check, validationResult } = require('./utils')
+const bcrypt = require('bcryptjs');
+const { User } = db;
+const { loginUser, logoutUser } = require('../auth')
+
+router.get('/login', csrfProtection, (req, res, next) => {
+    res.render('log-in', {
+        title: 'Login',
+        csrfToken: req.csrfToken()
+    });
+});
+
+const loginValidators = [
+    check('emailAddress')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a valid Email Address and Password.'),
+    check('password')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a valid Email Address and Password.'),
+];
+
+router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, res, next) => {
+    const {
+        emailAddress,
+        password,
+    } = req.body;
+
+    let errors = [];
+    const validatorErrors = validationResult(req);
+
+    if (validatorErrors.isEmpty()) {
+        const user = await User.findOne({ where: { emailAddress } });
+
+        if (user !== null) {
+            const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
+
+            if (passwordMatch) {
+                loginUser(req, res, user);
+                return res.redirect('/');
+            }
+        }
+
+        errors.push('Login failed for the provided email address and password');
+    } else {
+        errors = validatorErrors.array().map((error) => error.msg);
+    }
+
+    res.render('log-in', {
+        title: 'Login',
+        emailAddress,
+        errors,
+        csrfToken: req.csrfToken(),
+    });
+}))
+
+router.post('/logout', (req, res) => {
+    logoutUser(req, res);
+    res.redirect('/login');
+});
+
+module.exports = router;
