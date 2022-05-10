@@ -10,6 +10,7 @@ const { environment, sessionSecret } = require('./config');
 const indexRouter = require('./routes/index');
 const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
+const tasksRouter = require('./routes/tasks');
 const { restoreUser } = require('./auth');
 
 const app = express();
@@ -42,6 +43,7 @@ app.use(restoreUser);
 app.use('/', indexRouter);
 app.use('/signup', signupRouter);
 app.use(loginRouter);
+app.use('/tasks', tasksRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
