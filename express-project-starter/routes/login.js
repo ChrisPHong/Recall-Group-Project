@@ -56,9 +56,27 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
     });
 }))
 
-router.post('/logout', (req, res) => {
+router.post('/logout', asyncHandler(async (req, res) => {
+    const { userId } = req.session.auth;
+    const user = await User.findByPk(userId);
     logoutUser(req, res);
-    res.redirect('/login');
-});
+    if (user.emailAddress === 'Demo@demo.demo') {
+        user.destroy()
+    }
+    req.session.save(() => res.redirect('/'))
+}));
+
+router.post('/demo', asyncHandler(async (req, res) => {
+    const hashedPassword = await bcrypt.hash('demo', 10);
+    const user = await User.create({
+        firstName: 'Guest',
+        lastName: 'Demo',
+        emailAddress: 'Demo@demo.demo',
+        hashedPassword
+    });
+    loginUser(req, res, user);
+    return res.redirect('/');
+}));
+
 
 module.exports = router;
