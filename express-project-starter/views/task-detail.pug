@@ -1,9 +1,6 @@
-extends layout.pug
-
 include utils.pug
-block content
-    +validationErrorSummary(errors)
-    form(action="/tasks" method="post")
++validationErrorSummary(errors)
+    form(class='hidden')
         input(type='hidden' name='_csrf' value=csrfToken)
         +field('Content', 'content', task.content)
         label Due Date
@@ -15,8 +12,4 @@ block content
         select(name="listId")
             each list in lists
                 option(value=list.id) #{list.name}
-        button(type='submit') Add Task
-    ul
-        each task in tasks
-            li(class='tasks')= task.content
-                button(class='task-detail') Detail
+        button(type='submit') Delete

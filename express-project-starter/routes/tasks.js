@@ -70,6 +70,11 @@ router.post('/', csrfProtection, validateTask, asyncHandler(async (req, res, nex
 
     if (validatorErrors.isEmpty()) {
         await task.save();
+        const taskId = task.id;
+        await ListTask.create({
+            listId,
+            taskId
+        })
         res.redirect('/tasks');
     } else {
         const errors = validatorErrors.array().map((error) => error.msg);
