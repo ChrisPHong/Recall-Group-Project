@@ -39,7 +39,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
 
             if (passwordMatch) {
                 loginUser(req, res, user);
-                return res.redirect('/');
+                return req.session.save(() => res.redirect('/tasks'));
             }
         }
 
@@ -75,7 +75,7 @@ router.post('/demo', asyncHandler(async (req, res) => {
         hashedPassword
     });
     loginUser(req, res, user);
-    return res.redirect('/');
+    return res.redirect('/tasks');
 }));
 
 

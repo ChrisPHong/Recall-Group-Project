@@ -79,7 +79,7 @@ router.post('/', csrfProtection, userValidators, asyncHandler(async (req, res, n
     password,
   } = req.body;
 
-  const user = User.build({
+  const user = await User.build({
     firstName,
     lastName,
     emailAddress,
@@ -91,7 +91,7 @@ router.post('/', csrfProtection, userValidators, asyncHandler(async (req, res, n
     const hashedPassword = await bcrypt.hash(password, 12);
     user.hashedPassword = hashedPassword;
     await user.save();
-    // loginUser(req, res, user);
+    loginUser(req, res, user);
     res.redirect('/');
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);

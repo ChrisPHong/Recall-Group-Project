@@ -1,0 +1,27 @@
+extends layout.pug
+
+include utils.pug
+include task-detail.pug
+block content
+    div
+        +validationErrorSummary(errors)
+        form(action="/tasks" method="post")
+            input(type='hidden' name='_csrf' value=csrfToken)
+            +field('Content', 'content', task.content)
+            label Due Date
+            input(type='date', value=task.dueDate, name='dueDate')
+            label Priority
+            input(type='checkbox' name='priority')
+            +field('Git Repo Link', 'gitRepoLink', task.gitRepoLink)
+            +field('Location', 'location', task.location)
+            select(name="listId")
+                each list in lists
+                    option(value=list.id) #{list.name}
+            button(type='submit') Add Task
+        ul
+            each task in tasks
+                label Completed
+                input(type='checkbox' name='completed')
+                li(class='tasks')= task.content
+                    button(class='detail-btn btn' id=`task-detail-${task.id}`) Detail
+    +editField
