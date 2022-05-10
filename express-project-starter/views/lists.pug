@@ -1,0 +1,8 @@
+extends layout.pug
+block content
+    form(action="/lists" method="POST")
+        each list in lists
+            if loggedInUser === list.userId
+                ul
+                    li=list.name
+    a(href="/lists/new") Create A list
