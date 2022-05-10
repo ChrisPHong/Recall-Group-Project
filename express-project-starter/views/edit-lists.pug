@@ -1,0 +1,17 @@
+extends layout.pug
+
+include utils.pug
+block content
+    form(action="/lists")
+        ul
+            each list in lists
+                if loggedInUser === list.userId
+                    div(id=`list-container-${list.id}`)
+                        li=list.name
+                            button(class='edit-lists-btn' id=`edit-lists-${list.id}`) Edit
+                            form(class="hidden" id=`edit-lists-${list.id}`)
+                                input(type="hidden" name="_csrf" value=csrfToken)
+                                label List Name:
+                                input(type="text" name='name' value=list.name id=`${list.id}-edit-name`)
+                                button(class="edit-submit" id=`edit-submit-${list.id}`) Save Changes
+                                button(class='delete-lists-btn' id=`delete-lists-${list.id}`) Delete

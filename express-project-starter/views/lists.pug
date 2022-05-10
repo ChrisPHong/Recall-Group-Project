@@ -1,8 +1,14 @@
 extends layout.pug
+include utils.pug
 block content
     form(action="/lists" method="POST")
         each list in lists
             if loggedInUser === list.userId
                 ul
                     li=list.name
-    a(href="/lists/new") Create A list
+    +validationErrorSummary(errors)
+    form(action="/lists", method="post")
+        input(type="hidden" name="_csrf" value=csrfToken)
+        label List Name:
+        input(type="text", name="name")
+        button(type="submit") Submit

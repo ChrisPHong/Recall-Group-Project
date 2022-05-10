@@ -8,24 +8,22 @@ const {Task, List} = db;
 // Create a list for all of the lists so that we can see all of them
 
 
-router.get('/', asyncHandler(async(req, res, next)=>{
+// Everything below is for creating a New List
+
+router.get('/', csrfProtection, asyncHandler(async(req, res, next) =>{
     let loggedInUser;
     if(req.session.auth){
         loggedInUser = req.session.auth.userId;
     }
     const lists = await List.findAll({loggedInUser})
-    res.render('lists', {lists, loggedInUser});
-}));
 
-
-// Everything below is for creating a New List
-
-router.get('/new', csrfProtection, asyncHandler(async(req, res, next) =>{
     const list = List.build();
-    res.render('lists-new', {
+    res.render('lists', {
         title: "New List",
         list,
-        csrfToken: req.csrfToken()
+        csrfToken: req.csrfToken(),
+        lists,
+        loggedInUser
     });
 }))
 
@@ -47,15 +45,21 @@ router.post('/', csrfProtection, listValidators, asyncHandler(async(req, res, ne
     });
 
     const validatorErrors = validationResult(req);
+    let loggedInUser;
+    if(req.session.auth){
+        loggedInUser = req.session.auth.userId;
+    }
+    const lists = await List.findAll({loggedInUser})
 
     if(validatorErrors.isEmpty()){
         await list.save();
         res.redirect('/lists')
     } else{
         const errors = validatorErrors.array().map((error)=> error.msg);
-        res.render('lists-new', {
+        res.render('lists', {
             title: 'Create a List',
             list,
+            lists,
             errors,
             csrfToken: req.csrfToken(),
         });
@@ -66,6 +70,17 @@ router.post('/', csrfProtection, listValidators, asyncHandler(async(req, res, ne
 }));
 
 
+router.delete('/', asyncHandler(async(req, res, next)=>{
+    const list = await List.findByPk(req.params.id)
+    if(list){
+        await list.destroy()
+    } else{
+        res.json({message: 'fail'});
+    }
+
+    console.log(list);
+
+}))
 
 
 module.exports= router;
