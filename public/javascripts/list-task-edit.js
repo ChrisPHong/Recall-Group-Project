@@ -1,4 +1,4 @@
-const detailBtns = document.querySelectorAll('.tasks')
+const detailBtns = document.querySelectorAll('.tasksFromLists')
 
 for (let i = 0; i < detailBtns.length; i++) {
   const btn = detailBtns[i];
@@ -44,14 +44,12 @@ for (let i = 0; i < detailBtns.length; i++) {
         })
       })
 
-
       const data = await res.json()
       if (data.message === 'Success') {
-        console.log(data)
-        // console.log(contentEle);
-        const contentEle = document.getElementById(`task-${taskId}`);
-        contentEle.innerHTML = data.task.content;
-        form.classList.add('hidden');;
+        if (initialListId !== listId) {
+          const movedItem = document.getElementById(`list-item-${taskId}`);
+          movedItem.remove();
+        }
       } else {
         // TODO:create elements with error message
         console.log('No work!')

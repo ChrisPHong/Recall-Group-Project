@@ -1,0 +1,12 @@
+extends layout.pug
+
+include task-detail.pug
+block content
+  h1= title
+  ul
+   each task in tasks
+    div(id=`list-item-${task.id}` class='list-item')
+      label Completed
+      input(type='checkbox' name='completed')
+      li(class='tasksFromLists' id=`task-${task.id}`)= task.content
+      +editField(task)
