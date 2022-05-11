@@ -7,11 +7,10 @@ html
     script(src="/javascripts/index.js" type="module" defer)
     script(src="/javascripts/postEdit.js" type="module")
     script(src="/javascripts/postDelete.js" type="module")
+    script(src="/javascripts/search.js" type="module")
   body
     if locals.authenticated
       span Welcome #{user.firstName}!
-      input(type='search' placeholder='Find a task...' name='name' class='searchbar')
-      button(type='submit' class='searchbarBtn') Search
       form(action='/logout' method='post')
         button(type='submit') Logout
     else

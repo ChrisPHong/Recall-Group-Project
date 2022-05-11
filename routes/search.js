@@ -5,20 +5,13 @@ const { asyncHandler, csrfProtection } = require('./utils')
 const { User, Task, List } = db;
 
 
-router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
+router.get('/', asyncHandler(async (req, res, next) => {
     const { userId } = req.session.auth;
     const tasks = await Task.findAll({
         where: { userId }
     })
-    const lists = await List.findAll({
-        where: { userId }
-    })
-    const task = {}
-    res.render('tasks', { tasks, task, lists, csrfToken: req.csrfToken() })
+    res.render('search', { tasks })
 }));
-
-
-
 
 
 module.exports = router;

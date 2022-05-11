@@ -1,0 +1,9 @@
+extends layout.pug
+block content
+    input(type='search' placeholder='Find a task...' name='name' class='searchbar')
+    button(type='submit' class='searchbarBtn') Search
+    div
+        ul
+            each task in tasks
+                div
+                    li(class='hidden task')= task.content
