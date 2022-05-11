@@ -7,17 +7,14 @@ module.exports = (sequelize, DataTypes) => {
     dueDate: DataTypes.DATEONLY,
     priority: DataTypes.BOOLEAN,
     gitRepoLink: DataTypes.STRING,
-    location: DataTypes.STRING
+    location: DataTypes.STRING,
+    listId: DataTypes.INTEGER
   }, {});
   Task.associate = function(models) {
     // associations can be defined here
     Task.belongsTo(models.User, {foreignKey: 'userId'})
-    const columnMapping = {
-      through: 'ListTask',
-      otherkey: 'listId',
-      foreignKey: 'taskId'
-    }
-    Task.belongsToMany(models.List, columnMapping)
+    Task.belongsTo(models.List, { foreignKey: 'listId', onDelete: 'CASCADE',
+    hooks: true });
   };
   return Task;
 };

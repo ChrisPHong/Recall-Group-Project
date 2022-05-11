@@ -4,6 +4,7 @@ const db = require('../db/models');
 const { asyncHandler, csrfProtection, check, validationResult } = require('./utils')
 const bcrypt = require('bcryptjs');
 const { User } = db;
+const { loginUser } = require('../auth');
 
 /* GET users listing. */
 
@@ -91,6 +92,9 @@ router.post('/', csrfProtection, userValidators, asyncHandler(async (req, res, n
     const hashedPassword = await bcrypt.hash(password, 12);
     user.hashedPassword = hashedPassword;
     await user.save();
+    await List.create({
+      name: 'No List'
+    })
     loginUser(req, res, user);
     res.redirect('/');
   } else {
