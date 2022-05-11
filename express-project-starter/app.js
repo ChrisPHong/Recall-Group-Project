@@ -12,6 +12,7 @@ const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
 const tasksRouter = require('./routes/tasks');
 const { restoreUser } = require('./auth');
+const listRouter = require('./routes/lists');
 
 const app = express();
 // Bobby1!
@@ -44,6 +45,7 @@ app.use(restoreUser);
 app.use('/', indexRouter);
 app.use('/signup', signupRouter);
 app.use(loginRouter);
+app.use('/lists', listRouter);
 app.use('/tasks', tasksRouter);
 
 // catch 404 and forward to error handler
