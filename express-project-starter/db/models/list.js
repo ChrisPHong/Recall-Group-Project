@@ -7,14 +7,8 @@ module.exports = (sequelize, DataTypes) => {
   List.associate = function(models) {
     // associations can be defined here
     List.belongsTo(models.User, {foreignKey: 'userId'})
-    const columnMapping = {
-      through: 'ListTask',
-      otherkey: 'taskId',
-      foreignKey: 'listId',
-      onDelete: 'CASCADE',
-      hooks: true
-    }
-    List.belongsToMany(models.Task, columnMapping)
+    List.hasMany(models.Task, { foreignKey: 'listId', onDelete: 'CASCADE',
+    hooks: true });
   };
   return List;
 };

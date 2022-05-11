@@ -70,13 +70,6 @@ router.post('/', csrfProtection, validateTask, asyncHandler(async (req, res, nex
 
   if (validatorErrors.isEmpty()) {
     await task.save();
-    const taskId = task.id;
-    if (listId) {
-      await ListTask.create({
-        listId,
-        taskId
-      })
-    }
     res.redirect('/tasks');
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
@@ -91,43 +84,24 @@ router.post('/', csrfProtection, validateTask, asyncHandler(async (req, res, nex
   }
 }))
 
-router.put('/:id(\\d+)', asyncHandler(async(req, res) => {
+router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
+  console.log(req.body);
   const taskId = parseInt(req.params.id);
   const task = await Task.findByPk(taskId);
-  const listTask = await ListTask.findOne({
-    where: {taskId}
-  });
-  const newListId = parseInt(req.body.listId)
-
-  // console.log('Original listId: ', listTask.listId);
-  // console.log('New listId: ', newListId);
-
-  // if (newListId && newListId !== listTask.listId) {
-  //   listTask.destroy()
-  //   await ListTask.create({
-  //     listTask: newListId,
-  //     taskId
-  //   });
-  // };
 
   task.content = req.body.content;
   task.dueDate = req.body.dueDate;
   task.priority = req.body.priority;
   task.gitRepoLink = req.body.gitRepoLink;
   task.location = req.body.location;
+  task.listId = req.body.listId;
+
   await task.save();
 
   res.json({
     message: 'Success',
-    task,
-    listTask
+    task
   })
 }));
 
-// list/task join table update API
-// router.put('/listtasks/:id(\\d+)', asyncHandler(async(req, res) => {
-//   const listId = parseInt(req.params.id);
-//   const task = await ListTask.findByPk(listId);
-
-// }));
 module.exports = router;

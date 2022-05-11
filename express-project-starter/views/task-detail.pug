@@ -12,8 +12,11 @@ mixin editField(task)
       +field('Git Repo Link', 'gitRepoLink', task.gitRepoLink)
       +field('Location', 'location', task.location)
       select(name="listId")
-        option(selected disabled hidden) Change List
+        //- option(value='list.id' selected disabled hidden) #{list.id}
         each list in lists
-            option(value=list.id) #{list.name}
+          if (task.listId === list.id)
+            option(value=list.id selected)= list.name
+          else
+            option(value=list.id)= list.name
       button(type='submit' class='close-btn btn' id=`task-close-${task.id}`) Close
       button(class='delete-btn btn' id=`task-delete-${task.id}`) Delete Task

@@ -31,10 +31,6 @@ for (let i = 0; i < detailBtns.length; i++) {
       const location = form.location.value;
       const listId = form.listId.value;
 
-      // if (initialListId !== listId) {
-
-      // }
-      console.log(listId);
       const res = await fetch(`/tasks/${taskId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
