@@ -94,6 +94,21 @@ router.post('/', csrfProtection, validateTask, asyncHandler(async (req, res, nex
 router.put('/:id(\\d+)', asyncHandler(async(req, res) => {
   const taskId = parseInt(req.params.id);
   const task = await Task.findByPk(taskId);
+  const listTask = await ListTask.findOne({
+    where: {taskId}
+  });
+  const newListId = parseInt(req.body.listId)
+
+  // console.log('Original listId: ', listTask.listId);
+  // console.log('New listId: ', newListId);
+
+  // if (newListId && newListId !== listTask.listId) {
+  //   listTask.destroy()
+  //   await ListTask.create({
+  //     listTask: newListId,
+  //     taskId
+  //   });
+  // };
 
   task.content = req.body.content;
   task.dueDate = req.body.dueDate;
@@ -104,9 +119,15 @@ router.put('/:id(\\d+)', asyncHandler(async(req, res) => {
 
   res.json({
     message: 'Success',
-    task
+    task,
+    listTask
   })
 }));
 
+// list/task join table update API
+// router.put('/listtasks/:id(\\d+)', asyncHandler(async(req, res) => {
+//   const listId = parseInt(req.params.id);
+//   const task = await ListTask.findByPk(listId);
 
+// }));
 module.exports = router;

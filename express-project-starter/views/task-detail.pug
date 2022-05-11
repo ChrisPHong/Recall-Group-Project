@@ -1,6 +1,6 @@
 include utils.pug
 mixin editField(task)
-  div
+  div(class='edit-form' id=`div-form-${task.id}`)
     //- +validationErrorSummary(errors)
     form(class='hidden' id=`detail-form-${task.id}`)
       input(type='hidden' name='_csrf' value=csrfToken)
@@ -12,7 +12,8 @@ mixin editField(task)
       +field('Git Repo Link', 'gitRepoLink', task.gitRepoLink)
       +field('Location', 'location', task.location)
       select(name="listId")
-          each list in lists
-              option(value=list.id) #{list.name}
+        option(selected disabled hidden) Change List
+        each list in lists
+            option(value=list.id) #{list.name}
       button(type='submit' class='close-btn btn' id=`task-close-${task.id}`) Close
       button(class='delete-btn btn' id=`task-delete-${task.id}`) Delete Task

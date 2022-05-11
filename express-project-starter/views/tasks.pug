@@ -15,8 +15,9 @@ block content
             +field('Git Repo Link', 'gitRepoLink', task.gitRepoLink)
             +field('Location', 'location', task.location)
             select(name="listId")
-                each list in lists
-                    option(value=list.id) #{list.name}
+              option(selected disabled hidden) Choose List
+              each list in lists
+                  option(value=list.id) #{list.name}
             button(type='submit') Add Task
         ul
             each task in tasks
