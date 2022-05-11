@@ -84,6 +84,17 @@ router.post('/', csrfProtection, validateTask, asyncHandler(async (req, res, nex
   }
 }))
 
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
+  const taskId = parseInt(req.params.id);
+  const task = await Task.findByPk(taskId)
+  if (task) {
+    await task.destroy()
+    res.json({ message: 'Success' })
+  } else {
+    res.json({ message: 'Fail' })
+  }
+}))
+
 router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
   console.log(req.body);
   const taskId = parseInt(req.params.id);

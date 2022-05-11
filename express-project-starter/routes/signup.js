@@ -92,9 +92,9 @@ router.post('/', csrfProtection, userValidators, asyncHandler(async (req, res, n
     const hashedPassword = await bcrypt.hash(password, 12);
     user.hashedPassword = hashedPassword;
     await user.save();
-    await List.create({
-      name: 'No List'
-    })
+    // await List.create({
+    //   name: 'No List'
+    // });
     loginUser(req, res, user);
     res.redirect('/');
   } else {
