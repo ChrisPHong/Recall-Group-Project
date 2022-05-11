@@ -9,8 +9,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   User.associate = function(models) {
     // associations can be defined here
-    User.hasMany(models.List, {foreignKey: 'userId'})
-    User.hasMany(models.Task, {foreignKey: 'userId'})
+    // added a cascade feature to delete demo user
+    User.hasMany(models.List, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true})
+    User.hasMany(models.Task, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true})
   };
   return User;
 };

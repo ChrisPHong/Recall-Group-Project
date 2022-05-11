@@ -14,7 +14,7 @@ const tasksRouter = require('./routes/tasks');
 const { restoreUser } = require('./auth');
 
 const app = express();
-
+// Bobby1!
 // view engine setup
 app.set('view engine', 'pug');
 
@@ -22,8 +22,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(sessionSecret));
-// app.use(express.static('./public'))
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('./public'))
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // set up session middleware
 const store = new SequelizeStore({ db: sequelize });

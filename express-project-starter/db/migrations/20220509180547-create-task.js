@@ -12,10 +12,23 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(250)
       },
+      listId: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Lists',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
+      },
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: {model: 'Users'}
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
       completed: {
         allowNull: false,

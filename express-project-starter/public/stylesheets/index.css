@@ -2,6 +2,9 @@ h1 {
     color: #555555;
 }
 
+body {
+  background-color: pink;
+}
 
 .hidden {
     display: none

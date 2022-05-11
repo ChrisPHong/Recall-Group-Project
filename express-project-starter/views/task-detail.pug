@@ -1,18 +1,22 @@
 include utils.pug
-mixin editField
-    div
-        +validationErrorSummary(errors)
-        form(class='hidden' id=`detail-form-${task.id}`)
-            input(type='hidden' name='_csrf' value=csrfToken)
-            +field('Content', 'content', value=task.content, '', '', id=`edit-task-${task.id}-content`)
-            label Due Date
-            input(type='date', value=task.dueDate, name='dueDate', id=`edit-task-${task.id}-dueDate`)
-            label Priority
-            input(type='checkbox' name='priority' value=task.priority, id=`edit-task-${task.id}-priority`)
-            +field('Git Repo Link', 'gitRepoLink', value=task.gitRepoLink, '', '', id=`edit-task-${task.id}-gitRepoLink`)
-            +field('Location', 'location', value=task.location, '', '', id=`edit-task-${task.id}-location`)
-            select(name="listId", id=`edit-task-${task.id}-listId`)
-                each list in lists
-                    option(value=list.id) #{list.name}
-            button(type='submit' class='close-btn btn' id=`task-close-${task.id}`) Close
-            button(class='delete-btn btn' id=`task-delete-${task.id}`) Delete Task
+mixin editField(task)
+  div(class='edit-form' id=`div-form-${task.id}`)
+    //- +validationErrorSummary(errors)
+    form(class='hidden' id=`detail-form-${task.id}`)
+      input(type='hidden' name='_csrf' value=csrfToken)
+      +field('Content', 'content', task.content)
+      label Due Date
+      input(type='date', value=task.dueDate, name='dueDate')
+      label Priority
+      input(type='checkbox', name='priority')
+      +field('Git Repo Link', 'gitRepoLink', task.gitRepoLink)
+      +field('Location', 'location', task.location)
+      select(name="listId")
+        //- option(value='list.id' selected disabled hidden) #{list.id}
+        each list in lists
+          if (task.listId === list.id)
+            option(value=list.id selected)= list.name
+          else
+            option(value=list.id)= list.name
+      button(type='submit' class='close-btn btn' id=`task-close-${task.id}`) Close
+      button(class='delete-btn btn' id=`task-delete-${task.id}`) Delete Task
