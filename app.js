@@ -13,6 +13,7 @@ const loginRouter = require('./routes/login');
 const tasksRouter = require('./routes/tasks');
 const { restoreUser } = require('./auth');
 const listRouter = require('./routes/lists');
+const searchRouter = require('./routes/search');
 
 const app = express();
 // Bobby1!
@@ -47,6 +48,7 @@ app.use('/signup', signupRouter);
 app.use(loginRouter);
 app.use('/lists', listRouter);
 app.use('/tasks', tasksRouter);
+app.use('/search', searchRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

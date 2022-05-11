@@ -10,6 +10,8 @@ html
     script(src="/javascripts/delete-lists.js" type="module")
     script(src="/javascripts/edit-lists.js" type="module")
     script(src="/javascripts/list-task-edit.js" type="module")
+    script(src="/javascripts/search.js" type="module")
+
   body
     if locals.authenticated
       //- span Welcome #{user.firstName}!
@@ -17,8 +19,8 @@ html
         button(type='submit') Logout
     else
       span
-        a(href='/login') Login
-        a(href='/signup') Register
+        a(href='/login' class='loginbtn') Login
+        a(href='/signup' class='registerbtn') Register
         span
           form(method='post' action='/demo')
             button(type='submit') Demo
