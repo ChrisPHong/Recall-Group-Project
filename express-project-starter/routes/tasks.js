@@ -91,5 +91,22 @@ router.post('/', csrfProtection, validateTask, asyncHandler(async (req, res, nex
   }
 }))
 
+router.put('/:id(\\d+)', asyncHandler(async(req, res) => {
+  const taskId = parseInt(req.params.id);
+  const task = await Task.findByPk(taskId);
+
+  task.content = req.body.content;
+  task.dueDate = req.body.dueDate;
+  task.priority = req.body.priority;
+  task.gitRepoLink = req.body.gitRepoLink;
+  task.location = req.body.location;
+  await task.save();
+
+  res.json({
+    message: 'Success',
+    task
+  })
+}));
+
 
 module.exports = router;

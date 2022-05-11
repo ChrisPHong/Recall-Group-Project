@@ -20,8 +20,9 @@ block content
             button(type='submit') Add Task
         ul
             each task in tasks
+              div(id=`list-item-${task.id}` class='list-item')
                 label Completed
                 input(type='checkbox' name='completed')
-                li(class='tasks')= task.content
-                  button(class='detail-btn btn' id=`task-detail-${task.id}`) Detail
-                  +editField(task)
+                li(class='tasks' id=`task-${task.id}`)= task.content
+                +editField(task)
+                  //- button(class='detail-btn btn' id=`task-detail-${task.id}`) Detail
