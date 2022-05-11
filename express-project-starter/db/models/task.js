@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     const columnMapping = {
       through: 'ListTask',
       otherkey: 'listId',
-      foreignKey: 'taskId'
+      foreignKey: 'taskId',
+      onDelete: 'CASCADE',
+      hooks: true
     }
     Task.belongsToMany(models.List, columnMapping)
   };

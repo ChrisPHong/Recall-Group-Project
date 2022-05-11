@@ -45,7 +45,7 @@ for (let i = 0; i < detailBtns.length; i++) {
                 contentEle.innerHTML = data.task.content;
                 form.classList.add('hidden');;
             } else {
-                // create elements with error message
+                // TODO: create elements with error message
                 console.log('No work!')
             }
         })
