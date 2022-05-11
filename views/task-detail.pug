@@ -12,7 +12,10 @@ mixin editField(task)
       +field('Git Repo Link', 'gitRepoLink', task.gitRepoLink)
       +field('Location', 'location', task.location)
       select(name="listId")
-        //- option(value='list.id' selected disabled hidden) #{list.id}
+        if (task.listId === null)
+          option(value='noList' selected) No List
+        else
+          option(value='noList') No List
         each list in lists
           if (task.listId === list.id)
             option(value=list.id selected)= list.name

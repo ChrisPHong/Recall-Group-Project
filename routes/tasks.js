@@ -55,9 +55,9 @@ router.post('/', csrfProtection, validateTask, asyncHandler(async (req, res, nex
     listId
   } = req.body
 
+
   const task = await Task.build({
     userId,
-    listId,
     content,
     dueDate,
     priority,
@@ -69,6 +69,11 @@ router.post('/', csrfProtection, validateTask, asyncHandler(async (req, res, nex
   const validatorErrors = validationResult(req);
 
   if (validatorErrors.isEmpty()) {
+    if (listId === 'noList') {
+    task.listId = null
+    } else {
+      task.listId = listId
+    }
     await task.save();
     res.redirect('/tasks');
   } else {
@@ -96,7 +101,6 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
 }))
 
 router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
-  console.log(req.body);
   const taskId = parseInt(req.params.id);
   const task = await Task.findByPk(taskId);
 
@@ -105,7 +109,9 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
   task.priority = req.body.priority;
   task.gitRepoLink = req.body.gitRepoLink;
   task.location = req.body.location;
-  task.listId = req.body.listId;
+  if (req.body.listId == 'noList') {
+    task.listId = null;
+  } else task.listId = req.body.listId;
 
   await task.save();
 
