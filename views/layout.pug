@@ -10,12 +10,14 @@ html
   body
     if locals.authenticated
       span Welcome #{user.firstName}!
+      input(type='search' placeholder='Find a task...' name='name' class='searchbar')
+      button(type='submit' class='searchbarBtn') Search
       form(action='/logout' method='post')
         button(type='submit') Logout
     else
       span
-        a(href='/login') Login
-        a(href='/signup') Register
+        a(href='/login' class='loginbtn') Login
+        a(href='/signup' class='registerbtn') Register
         span
           form(method='post' action='/demo')
             button(type='submit') Demo
