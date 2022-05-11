@@ -13,6 +13,7 @@ router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
     where: { userId }
   })
   const task = {}
+
   //this should be able to ref the list associated with it as well as other properties
   res.render('tasks', { tasks, task, lists, csrfToken: req.csrfToken() })
 }))

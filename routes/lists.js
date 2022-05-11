@@ -60,13 +60,19 @@ router.post('/', csrfProtection, listValidators, asyncHandler(async (req, res, n
 
 router.get('/:id(\\d+/tasks)', asyncHandler(async (req, res, next) => {
   const listId = parseInt(req.params.id);
+  const { userId } = req.session.auth;
   const list = await List.findByPk(listId)
+  const lists = await List.findAll({ where:
+    { userId }
+  });
   const tasks = await Task.findAll({
     where: { listId }
   });
+
   res.render('list-tasks', {
     title: `${list.name}`,
-    tasks
+    tasks,
+    lists
   })
 }));
 

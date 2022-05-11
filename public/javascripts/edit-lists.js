@@ -19,7 +19,6 @@ for (let i = 0; i < editBtns.length; i++) {
             submitEvent.preventDefault();
             submitEvent.stopPropagation();
             const name = document.getElementById(`${listId}-edit-name`).value
-            console.log('------------------------------------------------', name);
 
             const res = await fetch(`/lists/${listId}`, {
                 method: 'PUT',

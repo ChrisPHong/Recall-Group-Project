@@ -9,6 +9,7 @@ html
     script(src="/javascripts/postDelete.js" type="module")
     script(src="/javascripts/delete-lists.js" type="module")
     script(src="/javascripts/edit-lists.js" type="module")
+    script(src="/javascripts/list-task-edit.js" type="module")
   body
     if locals.authenticated
       //- span Welcome #{user.firstName}!
@@ -22,4 +23,3 @@ html
           form(method='post' action='/demo')
             button(type='submit') Demo
     block content
-      h1= title
