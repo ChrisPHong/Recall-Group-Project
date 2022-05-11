@@ -70,15 +70,19 @@ router.post('/', csrfProtection, listValidators, asyncHandler(async(req, res, ne
 }));
 
 
-router.delete('/', asyncHandler(async(req, res, next)=>{
+router.delete('/:id(\\d+)', asyncHandler(async(req, res, next)=>{
     const list = await List.findByPk(req.params.id)
     if(list){
         await list.destroy()
+        console.log('Success!')
+        res.json({message: 'Success'});
+
     } else{
+        console.log('fail');
         res.json({message: 'fail'});
     }
 
-    console.log(list);
+    // console.log(list);
 
 }))
 

@@ -3,9 +3,14 @@ include utils.pug
 block content
     form(action="/lists" method="POST")
         each list in lists
-            if loggedInUser === list.userId
-                ul
-                    li=list.name
+            div(id=`list-container-${list.id}` class='div-container')
+                if loggedInUser === list.userId
+                    ul
+                        li=list.name
+                        button(class='deleteLists-btn' id=`deleteLists-${list.id}`) Delete
+                        button(class='edit-lists-btn' id=`edit-lists-${list.id}`) Edit
+    script(src="/javascripts/delete-lists.js" type="module")
+
     +validationErrorSummary(errors)
     form(action="/lists", method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
