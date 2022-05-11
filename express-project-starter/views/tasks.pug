@@ -23,5 +23,5 @@ block content
                 label Completed
                 input(type='checkbox' name='completed')
                 li(class='tasks')= task.content
-                    button(class='detail-btn btn' id=`task-detail-${task.id}`) Detail
-    +editField
+                  button(class='detail-btn btn' id=`task-detail-${task.id}`) Detail
+                  +editField(task)

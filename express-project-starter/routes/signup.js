@@ -4,6 +4,7 @@ const db = require('../db/models');
 const { asyncHandler, csrfProtection, check, validationResult } = require('./utils')
 const bcrypt = require('bcryptjs');
 const { User } = db;
+const { loginUser } = require('../auth');
 
 /* GET users listing. */
 
