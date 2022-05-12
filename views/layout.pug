@@ -4,6 +4,7 @@ html
     title="Recall"
     link(rel='stylesheet' href='/stylesheets/reset.css')
     link(rel="stylesheet", href="/stylesheets/index.css")
+    link(rel="stylesheet", href="/stylesheets/global.css")
     script(src="/javascripts/index.js" type="module" defer)
     script(src="/javascripts/postEdit.js" type="module")
     script(src="/javascripts/postDelete.js" type="module")
@@ -11,12 +12,15 @@ html
     script(src="/javascripts/edit-lists.js" type="module")
     script(src="/javascripts/list-task-edit.js" type="module")
     script(src="/javascripts/search.js" type="module")
+    script(src="/javascripts/list-task-display.js" type="module")
+    script(src="/javascripts/completed-task.js" type="module")
 
   body
     if locals.authenticated
       //- span Welcome #{user.firstName}!
-      form(action='/logout' method='post')
-        button(type='submit') Logout
+      div(class='header-display')
+        form(action='/logout' method='post')
+          button(type='submit') Logout
     else
       span
         a(href='/login' class='loginbtn') Login
