@@ -3,7 +3,7 @@ extends layout.pug
 include utils.pug
 include task-detail.pug
 block content
-  form(id='search')
+  form(id='search' autocomplete="off")
     input(type='search' placeholder='Find a task...' name='name' class='searchbar')
     button(type='submit' class='searchbarBtn') Search
     div
@@ -30,7 +30,7 @@ block content
         ul(id='all-task-list')
           each task in tasks
             div(id=`list-item-${task.id}` class='task-item')
-              div
+              div(class='inner-list-item')
                 li(class='tasks' id=`task-${task.id}`)= task.content
               div(class='done-check')
                 label(class='done-label') done?
