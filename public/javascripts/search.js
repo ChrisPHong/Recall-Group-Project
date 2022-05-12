@@ -12,7 +12,7 @@ search[0].addEventListener('input', async (e) => {
             e.classList.remove('hidden')
         }
     })
-    await fetch('/tasks', {
+    await fetch('/search', {
         method: 'GET',
     })
 })
