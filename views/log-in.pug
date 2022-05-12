@@ -2,10 +2,18 @@ extends layout.pug
 
 include utils.pug
 block content
-  +validationErrorSummary(errors)
-  form(method='post' action='/login')
-    input(type='hidden' name='_csrf' value=csrfToken)
-    +field('Email', 'emailAddress', '', 'email')
-    +field('Password', 'password', '', 'password')
-    button(type='submit') Log In!
-    a(href='/signup') You don't have an account? Sign up!
+  div(id='loginGrey')
+    div(id='loginBlock')
+      div(id='loginFields')
+        +validationErrorSummary(errors)
+        form(method='post' action='/login')
+          div(id='loginForm')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            div
+              +field('    Email    ', 'emailAddress', '', 'email')
+            div
+              +field('    Password    ', 'password', '', 'password')
+            div
+             button(type='submit') Log In!
+        a(href='/signup') Don't have an account? Sign up!
+      img(src="/img/RECALL4.png", alt="logo.gif" id='loginImg')

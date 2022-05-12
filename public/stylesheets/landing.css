@@ -1,0 +1,73 @@
+#wrapper1 {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-image: url(https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);
+    background-position: center;
+    background-size: 125%;
+    z-index: -2;
+}
+
+#landingNav {
+    background: rgba(0, 0, 0, .20);
+    padding: 10px;
+    margin: 20px;
+    ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    max-height: 165px;
+}
+
+#rightBtns {
+    display: flex;
+    align-items: center;
+}
+
+#leftNav {
+    margin: 10px;
+    width: 110px;
+    position: relative;
+    right: 75px
+}
+
+
+.loginbtn {
+    color: azure;
+    margin-right: 15px;
+    border-radius: 2px;
+    text-decoration: none;
+    padding: 3px;
+    font-size: 16px;
+}
+
+.registerbtn {
+    color: azure;
+    border-radius: 2px;
+    text-decoration: none;
+    padding: 3px;
+    border: azure solid 4px;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+#callToAction {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.callToActionBtn {
+    background: linear-gradient(to top right, rgba(255, 0, 0, 0), rgba(212, 2, 2, .95));
+    text-decoration: none;
+    color: azure;
+    padding: 15px;
+    margin-top: 20px;
+    border: black solid 2px;
+    border-radius: 3px;
+}

@@ -5,6 +5,9 @@ html
     link(rel='stylesheet' href='/stylesheets/reset.css')
     link(rel="stylesheet", href="/stylesheets/index.css")
     link(rel="stylesheet", href="/stylesheets/global.css")
+    link(rel="stylesheet", href="/stylesheets/landing.css")
+    link(rel="stylesheet", href="/stylesheets/login.css")
+    link(rel="stylesheet", href="/stylesheets/signup.css")
     script(src="/javascripts/index.js" type="module" defer)
     script(src="/javascripts/postEdit.js" type="module")
     script(src="/javascripts/postDelete.js" type="module")
@@ -22,10 +25,18 @@ html
         form(action='/logout' method='post')
           button(type='submit') Logout
     else
-      span
-        a(href='/login' class='loginbtn') Login
-        a(href='/signup' class='registerbtn') Register
-        span
-          form(method='post' action='/demo')
-            button(type='submit') Demo
+      div(id='wrapper1')
+        div(id='landingNav')
+          div
+            div(id='logoContainer')
+              img(src="/img/RECALL4.png", alt="logo" id='logo')
+          div(id='rightBtns')
+            div(id='leftNav')
+              a(href='/login' class='loginbtn') Login
+              a(href='/signup' class='registerbtn') Register
+            div(id='rightNav')
+              form(method='post' action='/demo')
+                button(type='submit') Demo
+        div(id='callToAction')
+          a(href='/signup' class='callToActionBtn') Sign Up Free
     block content
