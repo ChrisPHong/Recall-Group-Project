@@ -3,27 +3,32 @@ extends layout.pug
 include utils.pug
 include task-detail.pug
 block content
-    div
-        +validationErrorSummary(errors)
-        form(action="/tasks" method="post")
-            input(type='hidden' name='_csrf' value=csrfToken)
-            +field('Content', 'content', task.content)
-            label Due Date
-            input(type='date', value=task.dueDate, name='dueDate')
-            label Priority
-            input(type='checkbox' name='priority')
-            +field('Git Repo Link', 'gitRepoLink', task.gitRepoLink)
-            +field('Location', 'location', task.location)
-            select(name="listId")
-              option(value='noList') No List
-              each list in lists
-                  option(value=list.id) #{list.name}
-            button(type='submit') Add Task
-        ul
-            each task in tasks
-              div(id=`list-item-${task.id}` class='list-item')
-                label Completed
-                input(type='checkbox' name='completed')
+  div(class='top-display')
+    div(class='first-box')
+      +validationErrorSummary(errors)
+      div(class='create-task')
+        include task-create-form
+  div(class='main-display')
+    div(class='second-box box')
+      p(class='column-titles') My Lists:
+      ul
+        each list in lists
+          div(class='list-item')
+            li(class='lists' id=`list-${list.id}`)= list.name
+    div(class='third-box box')
+        p(class='column-titles' id='task-title') To Do:
+        div(class='display-tasks')
+        ul(id='all-task-list')
+          each task in tasks
+            div(id=`list-item-${task.id}` class='list-item')
+              div
                 li(class='tasks' id=`task-${task.id}`)= task.content
-                +editField(task)
-                  //- button(class='detail-btn btn' id=`task-detail-${task.id}`) Detail
+              div(class='done-check')
+                label(class='done-label') done?
+                if (task.completed === true)
+                  input(type='checkbox' name='completed' class='task-checkbox' id=`checkbox-${task.id}` checked)
+                else
+                  input(type='checkbox' name='completed' class='task-checkbox' id=`checkbox-${task.id}`)
+            +editField(task)
+    div(class='fourth-box box')
+      p(class='column-titles')
