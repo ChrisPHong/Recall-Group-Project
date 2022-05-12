@@ -104,6 +104,16 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   });
 }));
 
-
+router.get(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const tasks = await Task.findAll({
+      where: {
+        listId: req.params.id,
+      },
+    });
+    res.json({ tasks });
+  })
+);
 
 module.exports = router;

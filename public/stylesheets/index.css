@@ -1,18 +1,10 @@
-* {
-  margin: 5px;
-}
-
-h1 {
-  color: #555555;
-}
-
-body {
-  background-color: white;
-  margin: 15px;
+.header-display {
   display: flex;
-  flex-direction: column;
-  padding: 10px;
+  justify-content: end;
+  padding: 1em 0;
 }
+
+
 .main-display {
   display: grid;
   font-size: 12px;
@@ -75,6 +67,7 @@ body {
   position: absolute;
   top: 30%;
   left: 50%;
+  height: 500px;
 }
 
 .task-form input {
@@ -84,6 +77,17 @@ body {
 .task-form input:hover {
   border: black 1px solid;
   border-radius: 2px;
+}
+
+.input-label-field {
+  margin: 10px;
+}
+
+.button-container {
+  margin: 40px;
+  display: flex;
+  width: 100%;
+  align-items: space-evely;
 }
 
 .third-box {

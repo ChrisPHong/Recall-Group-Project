@@ -105,6 +105,7 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
   const taskId = parseInt(req.params.id);
   const task = await Task.findByPk(taskId);
 
+  task.completed = req.body.completed;
   task.content = req.body.content;
   task.dueDate = req.body.dueDate;
   task.priority = req.body.priority;
@@ -115,7 +116,7 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
   } else task.listId = req.body.listId;
 
   await task.save();
-
+  console.log(task);
   res.json({
     message: 'Success',
     task

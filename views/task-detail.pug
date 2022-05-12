@@ -5,22 +5,32 @@ mixin editField(task)
     //- +validationErrorSummary(errors)
     form(class='hidden task-form' id=`detail-form-${task.id}`)
       input(type='hidden' name='_csrf' value=csrfToken)
-      +field('Content', 'content', task.content)
-      label Due Date
-      input(type='date', value=task.dueDate, name='dueDate')
-      label Priority
-      input(type='checkbox', name='priority')
-      +field('Git Repo Link', 'gitRepoLink', task.gitRepoLink)
-      +field('Location', 'location', task.location)
-      select(name="listId")
-        if (task.listId === null)
-          option(value='noList' selected) No List
-        else
-          option(value='noList') No List
-        each list in lists
-          if (task.listId === list.id)
-            option(value=list.id selected)= list.name
+      div(class='input-label-field')
+        +field('Task: ', 'content', task.content)
+      div(class='input-label-field')
+        label Due Date:
+        input(type='date', value=task.dueDate, name='dueDate')
+        br
+      div(class='input-label-field')
+        label Priority:
+        input(type='checkbox', name='priority')
+      div(class='input-label-field')
+        +field('Git Repo Link: ', 'gitRepoLink', task.gitRepoLink)
+      div(class='input-label-field')
+        +field('Location: ', 'location', task.location)
+      div(class='input-label-field')
+        label List:
+        select(name="listId")
+          if (task.listId === null)
+            option(value='noList' selected) No List
           else
-            option(value=list.id)= list.name
-      button(type='submit' class='close-btn btn' id=`task-close-${task.id}`) Close
-      button(class='delete-btn btn' id=`task-delete-${task.id}`) Delete Task
+            option(value='noList') No List
+          each list in lists
+            if (task.listId === list.id)
+              option(value=list.id selected)= list.name
+            else
+              option(value=list.id)= list.name
+      br
+      div(class='button-container')
+      button(type='submit' class='close-btn btn task-detail-btn' id=`task-close-${task.id}`) Close
+      button(class='delete-btn btn task-detail-btn' id=`task-delete-${task.id}`) Delete Task

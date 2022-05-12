@@ -10,17 +10,25 @@ block content
         include task-create-form
   div(class='main-display')
     div(class="second-box")
-
+      p(class='column-titles') My Lists:
+      ul
+        each list in lists
+          div(class='list-item')
+            li(class='lists' id=`list-${list.id}`)= list.name
     div(class='third-box')
      div(class='display-tasks')
         p(class='column-titles') To Do:
-        ul
+        ul(id='all-task-list')
           each task in tasks
             div(id=`list-item-${task.id}` class='list-item')
               div
                 li(class='tasks' id=`task-${task.id}`)= task.content
               div(class='done-check')
                 label(class='done-label') done?
-                input(type='checkbox' name='completed' class='checkbox')
+                if (task.completed === true)
+                  input(type='checkbox' name='completed' class='task-checkbox' id=`checkbox-${task.id}` checked)
+                else
+                  input(type='checkbox' name='completed' class='task-checkbox' id=`checkbox-${task.id}`)
             +editField(task)
     div(class='fourth-box')
+      p(class='column-titles') :
