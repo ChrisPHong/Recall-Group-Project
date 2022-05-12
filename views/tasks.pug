@@ -20,7 +20,7 @@ block content
         div(class='display-tasks')
         ul(id='all-task-list')
           each task in tasks
-            div(id=`list-item-${task.id}` class='list-item')
+            div(id=`list-item-${task.id}` class='task-item')
               div
                 li(class='tasks' id=`task-${task.id}`)= task.content
               div(class='done-check')

@@ -16,7 +16,6 @@ for (let i = 0; i < checkbox.length; i++) {
 
     const data = await res.json()
     if (data.message === 'Success') {
-      console.log(data.task.completed)
       // console.log(contentEle);
     } else {
       // TODO:create elements with error message

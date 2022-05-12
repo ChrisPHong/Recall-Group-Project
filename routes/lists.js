@@ -112,9 +112,8 @@ router.get(
     const listId = parseInt(req.params.id, 10);
     const list = await List.findByPk(listId)
     const tasks = await Task.findAll({
-      where: {
-        listId: req.params.id,
-      },
+      where: { listId: req.params.id },
+      order: [['dueDate', 'ASC']]
     });
     res.json({ tasks, list });
   })
