@@ -2,13 +2,24 @@ extends layout.pug
 
 include utils.pug
 block content
-  +validationErrorSummary(errors)
-  form(method='post' action='/signup')
-    input(type='hidden' name='_csrf' value=csrfToken)
-    +field('First Name', 'firstName', user.firstName)
-    +field('Last Name', 'lastName', user.lastName)
-    +field('Email', 'emailAddress', user.emailAddress, 'email')
-    +field('Password', 'password', user.hashedPassword, 'password')
-    +field('Confirm Password', 'confirmPassword', '', 'password')
-    button(type='submit') Sign Up!
-    a(href='/login') Already have an account?
+  div(id='signupGrey')
+    div(id='signupBlock')
+      div(id='signupFields')
+        +validationErrorSummary(errors)
+        form(method='post' action='/signup')
+          div(id='signupForm')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            div
+              +field('First Name', 'firstName', user.firstName)
+            div
+             +field('Last Name', 'lastName', user.lastName)
+            div
+             +field('Email', 'emailAddress', user.emailAddress, 'email')
+            div
+             +field('Password', 'password', user.hashedPassword, 'password')
+            div
+             +field('Confirm Password', 'confirmPassword', '', 'password')
+            div
+              button(type='submit') Sign Up!
+        a(href='/login') Already have an account?
+      img(src="/img/RECALL4.png", alt="logo.gif" id='signupImg')

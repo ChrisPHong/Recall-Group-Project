@@ -1,0 +1,38 @@
+#loginGrey {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, .8);
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginBlock {
+    background: linear-gradient(to top right, rgba(219, 11, 157, .3), rgba(212, 2, 2, .95));
+    height: 65%;
+    width: 65%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginFields {
+    margin: 50px;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#loginImg {
+    width: 25%
+}
