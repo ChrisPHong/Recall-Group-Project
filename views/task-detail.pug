@@ -3,7 +3,7 @@ include utils.pug
 mixin editField(task)
   div(class='edit-form' id=`div-form-${task.id}`)
     //- +validationErrorSummary(errors)
-    form(class='hidden' id=`detail-form-${task.id}`)
+    form(class='hidden task-form' id=`detail-form-${task.id}`)
       input(type='hidden' name='_csrf' value=csrfToken)
       +field('Content', 'content', task.content)
       label Due Date
