@@ -3,6 +3,15 @@ extends layout.pug
 include utils.pug
 include task-detail.pug
 block content
+  form(id='search')
+    input(type='search' placeholder='Find a task...' name='name' class='searchbar')
+    button(type='submit' class='searchbarBtn') Search
+    div
+      ul
+        if (tasks)
+          each task in tasks
+            div
+                li(class=`task hidden`)= task.content
   div(class='top-display')
     div(class='first-box')
       +validationErrorSummary(errors)
