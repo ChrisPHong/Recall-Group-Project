@@ -14,29 +14,97 @@ for (let i = 0; i < detailBtns.length; i++) {
 
     const taskContainer = document.querySelector('.display-tasks');
     const taskHTML = tasks.map(
-      ({ content, id, completed }) => {
+      ({ content, id, completed, dueDate, location }) => {
         if (completed === true) {
           return `
         <ul id='all-task-list'>
           <div id='list-item-${id}' class='list-item'>
-            <li id='task-${id} class='tasks'>${content}</li>
+            <li id='task-${id}' class='tasks'>${content}</li>
           <div class='done-check'>
             <label class='done-label'> done? </label>
             <input type='checkbox' name='completed' class='task-checkbox' id='checkbox-${id}' checked>
           </div>
           </div>
+          <div class="edit-form" id="div-form-${id}">
+    <p class="column-titles hidden" id="task-details-title-${id}">Task Details:</p>
+    <form class="hidden task-form" id="detail-form-${id}" autocomplete="off">
+            <div class="input-label-field">
+                <div>
+                    <label for="content">Task: </label>
+                    <input type="text" id="content" name="content" value="${content}">
+                        <div class="input-label-field">
+                            <label>Due Date:</label>
+                            <input type="date" value="${dueDate}" name="dueDate">
+                                <br>
+                                </div>
+                                <div class="input-label-field"><label>Priority:</label>
+                                    <input type="checkbox" name="priority"></div><div class="input-label-field"><div>
+                                        <label for="gitRepoLink">Git Repo Link:
+                                        </label>
+                                        <input type="text" id="gitRepoLink" name="gitRepoLink" value="${gitRepoLink}"></div></div>
+                                <div class="input-label-field"><div>
+                                    <label for="location">Location: </label>
+                                    <input type="text" id="location" name="location" value="${location}"></div></div>
+                                    <div class="input-label-field">
+                                    <label>List:</label>
+                                     <select name="listId">
+                                        <option value="noList">No List</option>
+                                        <option value="5">Groceries</option>
+                                        <option value="4" selected="selected">Things2</option>
+                                        </select></div>
+                                <br>
+                                    <div class="button-container"></div>
+                                    <button class="close-btn btn task-detail-btn" type="submit" id="task-close-${id}">Close</button>
+                                    <button class="delete-btn btn task-detail-btn" id="task-delete-${id}">Delete Task</button>
+                                </form>
+                        </div>
+
         </ul>
         `
         } else {
           return `
           <ul id='all-task-list'>
             <div id='list-item-${id}' class='list-item'>
-              <li id='task-${id} class='tasks'>${content}</li>
+              <li id='task-${id}' class='tasks'>${content}</li>
             <div class='done-check'>
               <label class='done-label'> done? </label>
               <input type='checkbox' name='completed' class='task-checkbox' id='checkbox-${id}'>
             </div>
             </div>
+<div class="edit-form" id="div-form-${id}">
+    <p class="column-titles hidden" id="task-details-title-${id}">Task Details:</p>
+    <form class="hidden task-form" id="detail-form-${id}" autocomplete="off">
+            <div class="input-label-field">
+                <div>
+                    <label for="content">Task: </label>
+                    <input type="text" id="content" name="content" value="${content}">
+                        <div class="input-label-field">
+                            <label>Due Date:</label>
+                            <input type="date" value="${dueDate}" name="dueDate">
+                                <br>
+                                </div>
+                                <div class="input-label-field"><label>Priority:</label>
+                                    <input type="checkbox" name="priority"></div><div class="input-label-field"><div>
+                                        <label for="gitRepoLink">Git Repo Link:
+                                        </label>
+                                        <input type="text" id="gitRepoLink" name="gitRepoLink" value="${gitRepoLink}"></div></div>
+                                <div class="input-label-field"><div>
+                                    <label for="location">Location: </label>
+                                    <input type="text" id="location" name="location" value="${location}"></div></div>
+                                    <div class="input-label-field">
+                                    <label>List:</label>
+                                     <select name="listId">
+                                        <option value="noList">No List</option>
+                                        <option value="5">Groceries</option>
+                                        <option value="4" selected="selected">Things2</option>
+                                        </select></div>
+                                <br>
+                                    <div class="button-container"></div>
+                                    <button class="close-btn btn task-detail-btn" type="submit" id="task-close-${id}">Close</button>
+                                    <button class="delete-btn btn task-detail-btn" id="task-delete-${id}">Delete Task</button>
+                                </form>
+                        </div>
+
           </ul>
           `
         }
@@ -51,6 +119,14 @@ for (let i = 0; i < detailBtns.length; i++) {
       checkBoxes.forEach((checkbox) => {
         const taskId = checkbox.id.split('-')[1];
         checkbox.addEventListener('change', checkCheckboxStatus(taskId, checkbox))
+      })
+    }
+    const detailsBtns = document.querySelectorAll('.tasks');
+
+    if (detailsBtns) {
+      detailsBtns.forEach((detailBtn) => {
+        const taskId = detailBtn.id.split('-')[1];
+        detailBtn.addEventListener('click', getTaskDetails(taskId))
       })
     }
   });
@@ -91,10 +167,11 @@ const checkCheckboxStatus = (taskId, checkbox) => {
 
 const getTaskDetails = (taskId) => {
   return async (e) => {
-    e.stopPropagation();
+    // e.stopPropagation();
     const outerFormDiv = document.getElementsByClassName('edit-form');
     const currentDiv = document.getElementById(`div-form-${taskId}`)
     const form = document.getElementById(`detail-form-${taskId}`)
+    console.log(form);
     if (form.classList.contains('hidden')) {
       Array.from(outerFormDiv).forEach(div => {
         div.classList.add('hidden');
@@ -147,13 +224,4 @@ const getTaskDetails = (taskId) => {
       }
     })
   }
-}
-
-const detailsBtns = document.querySelectorAll('.tasks');
-
-if (detailsBtns) {
-  detailsBtns.forEach((detailBtn) => {
-    const taskId = detailBtn.id.split('-')[1];
-    detailBtn.addEventListener('click', getTaskDetails(taskId))
-  })
 }
