@@ -5,13 +5,14 @@ search[0].addEventListener('input', async (e) => {
     const value = search[0].value.toLowerCase();
     const tasks = document.querySelectorAll('.task')
     tasks.forEach((e) => {
-        if (e.innerHTML.includes(value)) {
-            e.classList.remove('hidden')
-        } else {
+        let task = e.innerHTML;
+        if (!task.toLowerCase().includes(value)) {
             e.classList.add('hidden')
+        } else {
+            e.classList.remove('hidden')
         }
     })
-    await fetch('/search', {
+    await fetch('/tasks', {
         method: 'GET',
     })
 })
