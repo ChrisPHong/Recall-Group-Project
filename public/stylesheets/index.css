@@ -36,6 +36,19 @@
   display: inline-flex;
 }
 
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: rgb(238, 230, 230) 1px solid;
+  padding: .25em 0;
+}
+
+.task-item:hover {
+  background-color: rgb(250, 250, 250);
+  cursor: grab;
+}
+
 .list-item {
   display: flex;
   justify-content: space-between;

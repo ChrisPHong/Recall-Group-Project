@@ -57,6 +57,5 @@ for (let i = 0; i < detailBtns.length; i++) {
         console.log('No work!')
       }
     })
-
   })
 }
