@@ -2,8 +2,9 @@ include utils.pug
 
 mixin editField(task)
   div(class='edit-form' id=`div-form-${task.id}`)
+    p(class='column-titles hidden' id=`task-details-title-${task.id}`) Task Details:
     //- +validationErrorSummary(errors)
-    form(class='hidden task-form' id=`detail-form-${task.id}`)
+    form(class='hidden task-form' id=`detail-form-${task.id}` autocomplete="off")
       input(type='hidden' name='_csrf' value=csrfToken)
       div(class='input-label-field')
         +field('Task: ', 'content', task.content)

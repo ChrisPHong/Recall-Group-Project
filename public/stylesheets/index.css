@@ -18,7 +18,6 @@
 
 .top-display {
  display: inline-flex;
- border: black 1px solid;
  flex-grow: 3;
 }
 /* .first-box {
@@ -30,7 +29,7 @@
 }
 
 .second-box {
-  border: green 1px solid;
+
 }
 
 .create-task-form {
@@ -42,10 +41,12 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: rgb(238, 230, 230) 1px solid;
+  padding: .25em 0;
 }
 
 .list-item:hover {
   background-color: rgb(250, 250, 250);
+  cursor: grab;
 }
 
 .done-check {
@@ -75,8 +76,8 @@
 }
 
 .task-form input:hover {
-  border: black 1px solid;
   border-radius: 2px;
+  border: gray solid 1px;
 }
 
 .input-label-field {
@@ -90,10 +91,14 @@
   align-items: space-evely;
 }
 
+.box {
+  margin: 0 2em;
+}
+
 .third-box {
-  border: black 1px solid;
+
 }
 
 .fourth-box {
-  border: black 1px solid;
+
 }

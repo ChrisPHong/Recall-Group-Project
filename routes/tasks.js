@@ -7,10 +7,12 @@ const { User, Task, List, ListTask } = db;
 router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
   const { userId } = req.session.auth;
   const tasks = await Task.findAll({
-    where: { userId }
+    where: { userId },
+    order: [['dueDate', 'ASC']]
   })
   const lists = await List.findAll({
-    where: { userId }
+    where: { userId },
+    order: [['name', 'ASC']]
   })
   const task = {}
 

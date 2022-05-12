@@ -13,8 +13,9 @@ const { Task, List } = db;
 router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
   const { userId } = req.session.auth
   const lists = await List.findAll({
-    where: { userId }
-   })
+    where: { userId },
+    order: [['name', 'DESC']]
+  })
   res.render('lists', {
     title: "New List",
     csrfToken: req.csrfToken(),
@@ -41,7 +42,7 @@ router.post('/', csrfProtection, listValidators, asyncHandler(async (req, res, n
   const validatorErrors = validationResult(req);
   const lists = await List.findAll({
     where: { userId }
-   })
+  })
 
   if (validatorErrors.isEmpty()) {
     await list.save();
@@ -62,8 +63,9 @@ router.get('/:id(\\d+/tasks)', asyncHandler(async (req, res, next) => {
   const listId = parseInt(req.params.id);
   const { userId } = req.session.auth;
   const list = await List.findByPk(listId)
-  const lists = await List.findAll({ where:
-    { userId }
+  const lists = await List.findAll({
+    where:
+      { userId }
   });
   const tasks = await Task.findAll({
     where: { listId }
@@ -107,12 +109,14 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res, next) => {
 router.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res, next) => {
+    const listId = parseInt(req.params.id, 10);
+    const list = await List.findByPk(listId)
     const tasks = await Task.findAll({
       where: {
         listId: req.params.id,
       },
     });
-    res.json({ tasks });
+    res.json({ tasks, list });
   })
 );
 

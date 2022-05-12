@@ -7,17 +7,22 @@ for (let i = 0; i < detailBtns.length; i++) {
     const listId = btn.id.split('-')[1];
     const taskList = document.getElementById('all-task-list');
     taskList.classList.add('hidden');
-    const res = await fetch (`lists/${listId}`);
+    const res = await fetch(`lists/${listId}`);
 
-    const { tasks } = await res.json();
-    console.log(tasks);
+    const { tasks, list } = await res.json();
 
     const taskContainer = document.querySelector('.display-tasks');
     const taskHTML = tasks.map(
-      ( { content } ) => `
-      <li>${content}<li>
+      ({ content, id }) => `
+      <ul>
+        <li id='task-${id} class='tasks'>${content}<li>
+      <ul>
       `
-    )
+    );
+
+
+    const columnTitle = document.getElementById('task-title')
+    columnTitle.innerText = `${list.name}: `;
     taskContainer.innerHTML = taskHTML.join('');
   });
 }
