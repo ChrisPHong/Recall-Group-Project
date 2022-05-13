@@ -96,7 +96,7 @@ router.post('/', csrfProtection, userValidators, asyncHandler(async (req, res, n
     //   name: 'No List'
     // });
     loginUser(req, res, user);
-    res.redirect('/');
+    res.redirect('/tasks');
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
     res.render('sign-up', {
