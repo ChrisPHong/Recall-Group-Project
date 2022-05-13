@@ -1,19 +1,28 @@
-extends layout.pug
 include utils.pug
 block content
-    +validationErrorSummary(errors)
-    form(action="/lists", method="post")
-        input(type="hidden" name="_csrf" value=csrfToken)
-        label List Name:
-        input(type="text", name="name")
-        button(type="submit") Submit
-    ul
-        each list in lists
-            div(id=`list-container-${list.id}` class='div-container')
-                    a(href=`/lists/${list.id}/tasks` id=`${list.id}-name`)=list.name
-                    button(class='deleteLists-btn' id=`deleteLists-${list.id}`) Delete
-                    button(class='edit-lists-btn' id=`edit-lists-${list.id}`) Edit
-                    form(action="" class="edit-forms hidden" id=`edit-form-${list.id}`)
-                        label List Name:
-                        input(type="text", name="name" value=list.name id=`${list.id}-edit-name`)
-                        button(id=`edit-submit-${list.id}`) Save Changes
+  +validationErrorSummary(errors)
+  form(action="/lists", method="post" autocomplete='off')
+    input(type="hidden" name="_csrf" value=csrfToken)
+    label List Name:
+    input(type="text", name="name")
+    button(type="submit") Submit
+  ul
+    each list in lists
+      div(class='list-item div-container' id=`list-container-${list.id}`)
+        li(class='lists' id=`${list.id}-name`)= list.name
+        span(class="material-symbols-outlined edit-lists-btn" id=`edit-lists-${list.id}`) edit
+        div(class='deleteLists-btn')
+        span(class="material-symbols-outlined deleteLists-btn" id=`deleteLists-${list.id}`) delete
+        div(class='edit-form' id=`div-form-${list.id}`)
+          form(class="edit-forms hidden" id=`edit-form-${list.id}` autocomplete='off')
+            label List Name:
+            input(type="text", name="name" value=list.name id=`${list.id}-edit-name`)
+            span(class="material-symbols-outlined" id=`edit-submit-${list.id}`) done
+            span(class="material-symbols-outlined" id=`cancel-submit-${list.id}`) close
+          //- button(id=`edit-submit-${list.id}`) Save Changes
+
+
+        //- div(id=`list-container-${list.id}` class='div-container')
+        //-   //- a(href=`/lists/${list.id}/tasks` id=`${list.id}-name`)=list.name
+        //-   button(class='deleteLists-btn' id=`deleteLists-${list.id}`) Delete
+        //-   button(class='edit-lists-btn' id=`edit-lists-${list.id}`) Edit

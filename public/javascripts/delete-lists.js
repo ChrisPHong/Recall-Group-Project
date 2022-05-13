@@ -1,11 +1,10 @@
-console.log('delete-lists.js RUNNING')
 const deleteBtns = document.querySelectorAll('.deleteLists-btn')
 deleteBtns.forEach(btn => {
   btn.addEventListener('click', async (e) => {
     e.preventDefault();
     const listId = e.target.id.split('-')[1]
 
-    console.log(listId);
+    console.log('listid',listId);
 
     const res = await fetch(`/lists/${listId}`, {
       method: 'DELETE'
