@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
   const columnTitle = document.getElementById('task-title')
   columnTitle.innerHTML = `
-      To Do:
+      <p id='column-two-list-name'>To Do:</p>
       <p class='list-summary-title'>All task summary:</p>
       <span><p class='list-summary-details'>Total Tasks: ${totalTasks}</p></span>
       <span><p class='list-summary-details'>Tasks to Complete: ${uncompletedTasks}</p></span>
