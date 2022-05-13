@@ -1,5 +1,5 @@
 form(id='search' autocomplete="off")
-  input(type='search' placeholder='Find a task...' name='name' class='searchbar')
+  input(type='search' placeholder='Find a task...' name='name' class='searchbar' onkeypress="return event.keyCode != 13;")
   //- button(type='submit' class='searchbarBtn') Search
   div
     ul
