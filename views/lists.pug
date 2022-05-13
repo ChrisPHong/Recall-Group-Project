@@ -13,7 +13,7 @@ block content
         span(class="material-symbols-outlined edit-lists-btn" id=`edit-lists-${list.id}`) edit
         div(class='deleteLists-btn')
         span(class="material-symbols-outlined deleteLists-btn" id=`deleteLists-${list.id}`) delete
-        div(class='edit-form' id=`div-form-${list.id}`)
+        div(class='edit-form' id=`div-list-form-${list.id}`)
           form(class="edit-forms hidden" id=`edit-form-${list.id}` autocomplete='off')
             //- label New List Name:
             input(type="text", name="name" value=list.name id=`${list.id}-edit-name`)
