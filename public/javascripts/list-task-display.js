@@ -189,7 +189,6 @@ const getTaskDetails = (taskId) => {
     const outerFormDiv = document.getElementsByClassName('edit-form');
     const currentDiv = document.getElementById(`div-form-${taskId}`)
     const form = document.getElementById(`detail-form-${taskId}`)
-    console.log(form);
     if (form.classList.contains('hidden')) {
       Array.from(outerFormDiv).forEach(div => {
         div.classList.add('hidden');
