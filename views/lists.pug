@@ -1,6 +1,5 @@
 include utils.pug
 block content
-  +validationErrorSummary(errors)
   form(action="/lists", method="post" autocomplete='off')
     input(type="hidden" name="_csrf" value=csrfToken)
     label List Name:
