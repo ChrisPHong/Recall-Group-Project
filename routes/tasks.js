@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/models');
-const { asyncHandler, csrfProtection, check, validationResult } = require('./utils')
+const { asyncHandler, handleValidationErrors, csrfProtection, check, validationResult } = require('./utils')
 const { User, Task, List, ListTask } = db;
 
 router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
@@ -38,7 +38,7 @@ const validateTask = [
     .withMessage('Input too long.'),
   check('location')
     .isLength({ max: 250 })
-    .withMessage('Input too long.'),
+    .withMessage('Input too long.')
 ]
 
 router.post('/', csrfProtection, validateTask, asyncHandler(async (req, res, next) => {
@@ -103,7 +103,7 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
   }
 }))
 
-router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
+router.put('/:id(\\d+)', validateTask,  handleValidationErrors, asyncHandler(async (req, res) => {
   const taskId = parseInt(req.params.id);
   const task = await Task.findByPk(taskId);
 
@@ -116,6 +116,7 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
   if (req.body.listId == 'noList') {
     task.listId = null;
   } else task.listId = req.body.listId;
+
 
   await task.save();
   console.log(task);

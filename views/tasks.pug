@@ -3,10 +3,11 @@ extends layout.pug
 include utils.pug
 include task-detail.pug
 block content
+  +validationErrorSummary(errors)
+  .errors-container
   include search-form.pug
   div(class='top-display')
     div(class='first-box')
-      +validationErrorSummary(errors)
       div(class='create-task')
         include task-create-form
   div(class='main-display')
