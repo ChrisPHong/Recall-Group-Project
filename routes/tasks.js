@@ -29,7 +29,8 @@ const validateTask = [
     .isLength({ max: 250 })
     .withMessage('Input too long.'),
   check('dueDate')
-    .isISO8601(),
+    .isISO8601()
+    .withMessage('Please provide a date.'),
   check('gitRepoLink')
     // .matches(url)
     // .withMessage('URL was proivided in the incorrect format')
@@ -72,7 +73,7 @@ router.post('/', csrfProtection, validateTask, asyncHandler(async (req, res, nex
 
   if (validatorErrors.isEmpty()) {
     if (listId === 'noList') {
-    task.listId = null
+      task.listId = null
     } else {
       task.listId = listId
     }
