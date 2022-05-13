@@ -6,7 +6,6 @@ for (let i = 0; i < detailBtns.length; i++) {
     e.stopPropagation();
 
     const listId = btn.id.split('-')[1];
-    console.log(listId)
     const taskList = document.getElementById('all-task-list');
     taskList.classList.add('hidden');
     const res = await fetch(`lists/${listId}`);
@@ -15,7 +14,7 @@ for (let i = 0; i < detailBtns.length; i++) {
     console.log(tasks)
     const taskContainer = document.querySelector('.display-tasks');
     const taskHTML = tasks.map(
-      ({ content, id, completed, dueDate, location }) => {
+      ({ content, id, completed, dueDate, location, gitRepoLink }) => {
         if (completed === true) {
           return `
         <ul id='all-task-list'>
@@ -110,8 +109,26 @@ for (let i = 0; i < detailBtns.length; i++) {
           `
         }
       });
+
+
+    let completedTasks = 0;
+    let uncompletedTasks = 0;
+    tasks.forEach(task => {
+      if (task.completed === true) completedTasks += 1;
+      else uncompletedTasks += 1;
+    })
+
+    // console.log('completedTasks: ', completedTasks)
+    // console.log('uncompletedTasks: ', uncompletedTasks)
+    // console.log(tasks.length);
     const columnTitle = document.getElementById('task-title')
-    columnTitle.innerText = `${list.name}: `;
+    // columnTitle.innerText = `${list.name}: `;
+    columnTitle.innerHTML = `
+      ${list.name}
+      <p class='list-summary-title'>List Summary:</p>
+      <span><p class= 'list-summary-details'>Tasks to Complete: ${uncompletedTasks}</p></span>
+      <span><p class= 'list-summary-details'>Finished Tasks: ${completedTasks}</p></span>
+    `
     taskContainer.innerHTML = taskHTML.join('');
 
     const checkBoxes = document.querySelectorAll('.task-checkbox');
@@ -155,7 +172,7 @@ const checkCheckboxStatus = (taskId, checkbox) => {
 
     const data = await res.json()
     if (data.message === 'Success') {
-      console.log(data.task.completed)
+      // console.log(data.task.completed)
       // console.log(contentEle);
     } else {
       // TODO:create elements with error message
