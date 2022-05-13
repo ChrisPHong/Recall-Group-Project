@@ -67,6 +67,10 @@
   justify-content: center;
   align-items: center;
 }
+.list-summary-title {
+  font-size: .5em;
+  font-weight: bold;
+}
 
 .done-label {
   font-size: .75em;
