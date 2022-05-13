@@ -1,0 +1,39 @@
+
+.header-display{
+    background: linear-gradient(to top right, rgba(219, 11, 157, .3), rgba(212, 2, 2, .95));
+    border-radius: 5px 5px;
+}
+
+html{
+    background-color: black;
+}
+body{
+    background: #121212;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+}
+/* .main-display{
+
+
+} */
+.task-item{
+border-top: rgb(255, 255, 255);
+border-bottom: rgb(255, 255, 255);
+}
+
+.box{
+background-color: #333333;
+border: solid black;
+border-radius: 5px 5px;
+box-shadow: 5px grey;
+}
+.task-form{
+    border: solid black 2px;
+    background-color: rgb(133, 131, 131);
+    transition-duration: 2s;
+}
+
+.task-form:hover{
+    background-color: rgb(169, 169, 169);
+
+}
