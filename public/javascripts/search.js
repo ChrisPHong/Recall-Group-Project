@@ -1,7 +1,11 @@
 const search = document.querySelector('.searchbar')
 const searchBtn = document.querySelector('.searchbarBtn')
 
-search.addEventListener('input', async (e) => {
+search.addEventListener('keypress', async (e) => {
+  if (e.keyCode === 13 || e.which === 13) {
+      e.preventDefault();
+      return false;
+  }
 
   const res = await fetch('/search');
   const { tasks } = await res.json();
