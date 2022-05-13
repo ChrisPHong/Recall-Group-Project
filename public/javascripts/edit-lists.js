@@ -6,7 +6,7 @@ for (let i = 0; i < editBtns.length; i++) {
     e.preventDefault();
     const listId = e.target.id.split('-')[2]
     const outerFormDiv = document.getElementsByClassName('edit-form');
-    const currentDiv = document.getElementById(`div-form-${listId}`)
+    const currentDiv = document.getElementById(`div-list-form-${listId}`)
     const form = document.getElementById(`edit-form-${listId}`)
     if (form.classList.contains('hidden')) {
       Array.from(outerFormDiv).forEach(div => {
