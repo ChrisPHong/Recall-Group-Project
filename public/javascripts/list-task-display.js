@@ -4,7 +4,6 @@ for (let i = 0; i < detailBtns.length; i++) {
   const btn = detailBtns[i];
   btn.addEventListener('click', async (e) => {
     e.stopPropagation();
-
     const listId = btn.id.split('-')[1];
     const taskList = document.getElementById('all-task-list');
     taskList.classList.add('hidden');
@@ -15,8 +14,12 @@ for (let i = 0; i < detailBtns.length; i++) {
     const optionValues = listArray.map((lists) =>{
       const listName = lists.name
       const listId = lists.id
+        if (listId === tasks.listId){
+          return `<option selected value="${listId}">${listName}</option>`
+        } else{
+          return `<option value="${listId}">${listName}</option>`
 
-      return `<option value="${listId}">${listName}</option>`
+        }
 
     })
 
@@ -203,6 +206,7 @@ const getTaskDetails = (taskId) => {
 
 
     const initialListId = form.listId.value;
+    const actualInitialId = initialListId;
 
     const closeBtn = document.getElementById(`task-close-${taskId}`)
     closeBtn.addEventListener('click', async (closeEvent) => {
@@ -214,6 +218,20 @@ const getTaskDetails = (taskId) => {
       const gitRepoLink = form.gitRepoLink.value;
       const location = form.location.value;
       const listId = form.listId.value;
+
+        console.log(initialListId, 'initialListId')
+        console.log(listId, 'changed list ID')
+
+        if(actualInitialId !== listId){
+        console.log('Remove this guy!');
+        const getTask = document.getElementById(`list-item-${taskId}`)
+        getTask.style.display='none';
+
+      } else{
+        console.log('Nothing Happens');
+        // console.log(initialListId, 'initial')
+        // console.log(listId, 'actual')
+      }
 
       const res = await fetch(`/tasks/${taskId}`, {
         method: 'PUT',
@@ -231,11 +249,11 @@ const getTaskDetails = (taskId) => {
 
       const data = await res.json()
       if (data.message === 'Success') {
-        console.log(data)
-        // console.log(contentEle);
+        console.log(data);
         const contentEle = document.getElementById(`task-${taskId}`);
         contentEle.innerHTML = data.task.content;
-        form.classList.add('hidden');;
+        form.classList.add('hidden');
+
       } else {
         // TODO:create elements with error message
         console.log('No work!')
