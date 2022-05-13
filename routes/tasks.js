@@ -48,7 +48,6 @@ router.post('/', csrfProtection, validateTask, asyncHandler(async (req, res, nex
   const lists = await List.findAll({
     where: { userId }
   })
-  console.log(lists)
   const {
     content,
     dueDate,

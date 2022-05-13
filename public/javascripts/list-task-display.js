@@ -11,7 +11,7 @@ for (let i = 0; i < detailBtns.length; i++) {
     const res = await fetch(`lists/${listId}`);
 
     const { tasks, list } = await res.json();
-    console.log(tasks)
+    // console.log(tasks)
     const taskContainer = document.querySelector('.display-tasks');
     const taskHTML = tasks.map(
       ({ content, id, completed, dueDate, location, gitRepoLink }) => {
@@ -113,19 +113,18 @@ for (let i = 0; i < detailBtns.length; i++) {
 
     let completedTasks = 0;
     let uncompletedTasks = 0;
+    let totalTasks = 0;
     tasks.forEach(task => {
+      totalTasks += 1;
       if (task.completed === true) completedTasks += 1;
       else uncompletedTasks += 1;
     })
 
-    // console.log('completedTasks: ', completedTasks)
-    // console.log('uncompletedTasks: ', uncompletedTasks)
-    // console.log(tasks.length);
     const columnTitle = document.getElementById('task-title')
-    // columnTitle.innerText = `${list.name}: `;
     columnTitle.innerHTML = `
       ${list.name}
       <p class='list-summary-title'>List Summary:</p>
+      <span><p class= 'list-summary-details'>Total Tasks: ${totalTasks}</p></span>
       <span><p class= 'list-summary-details'>Tasks to Complete: ${uncompletedTasks}</p></span>
       <span><p class= 'list-summary-details'>Finished Tasks: ${completedTasks}</p></span>
     `
