@@ -30,7 +30,7 @@ for (let i = 0; i < detailBtns.length; i++) {
       const gitRepoLink = form.gitRepoLink.value;
       const location = form.location.value;
       const listId = form.listId.value;
-
+      // test comment
       const res = await fetch(`/tasks/${taskId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
