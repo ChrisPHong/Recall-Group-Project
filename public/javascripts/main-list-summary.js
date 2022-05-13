@@ -26,8 +26,8 @@ window.addEventListener('DOMContentLoaded', async (e) => {
   columnTitle.innerHTML = `
       To Do:
       <p class='list-summary-title'>All task summary:</p>
-      <span><p class= 'list-summary-details'>Total Tasks: ${totalTasks}</p></span>
-      <span><p class= 'list-summary-details'>Tasks to Complete: ${uncompletedTasks}</p></span>
-      <span><p class= 'list-summary-details'>Finished Tasks: ${completedTasks}</p></span>
+      <span><p class='list-summary-details'>Total Tasks: ${totalTasks}</p></span>
+      <span><p class='list-summary-details'>Tasks to Complete: ${uncompletedTasks}</p></span>
+      <span><p class='list-summary-details'>Finished Tasks: ${completedTasks}</p></span>
       `
 })
