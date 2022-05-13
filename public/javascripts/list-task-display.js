@@ -6,12 +6,13 @@ for (let i = 0; i < detailBtns.length; i++) {
     e.stopPropagation();
 
     const listId = btn.id.split('-')[1];
+    console.log(listId)
     const taskList = document.getElementById('all-task-list');
     taskList.classList.add('hidden');
     const res = await fetch(`lists/${listId}`);
 
     const { tasks, list } = await res.json();
-
+    console.log(tasks)
     const taskContainer = document.querySelector('.display-tasks');
     const taskHTML = tasks.map(
       ({ content, id, completed, dueDate, location }) => {

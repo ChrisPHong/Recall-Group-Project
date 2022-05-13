@@ -9,7 +9,7 @@ block content
   ul
     each list in lists
       div(class='list-item div-container' id=`list-container-${list.id}`)
-        li(class='lists' id=`${list.id}-name`)= list.name
+        li(class='lists' id=`name-${list.id}`)= list.name
         span(class="material-symbols-outlined edit-lists-btn" id=`edit-lists-${list.id}`) edit
         div(class='deleteLists-btn')
         span(class="material-symbols-outlined deleteLists-btn" id=`deleteLists-${list.id}`) delete

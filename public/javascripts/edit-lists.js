@@ -35,7 +35,7 @@ for (let i = 0; i < editBtns.length; i++) {
       const data = await res.json()
       if (data.message === 'Success') {
         console.log(data)
-        const nameValue = document.getElementById(`${listId}-name`)
+        const nameValue = document.getElementById(`name-${listId}`)
         nameValue.innerHTML = data.list.name
         form.classList.add('hidden')
       } else {
