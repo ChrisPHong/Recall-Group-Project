@@ -3,15 +3,7 @@ extends layout.pug
 include utils.pug
 include task-detail.pug
 block content
-  form(id='search' autocomplete="off")
-    input(type='search' placeholder='Find a task...' name='name' class='searchbar')
-    button(type='submit' class='searchbarBtn') Search
-    div
-      ul
-        if (tasks)
-          each task in tasks
-            div
-                li(class=`task hidden`)= task.content
+  include search-form.pug
   div(class='top-display')
     div(class='first-box')
       +validationErrorSummary(errors)
@@ -20,10 +12,7 @@ block content
   div(class='main-display')
     div(class='second-box box')
       p(class='column-titles') My Lists:
-      ul
-        each list in lists
-          div(class='list-item')
-            li(class='lists' id=`list-${list.id}`)= list.name
+      include lists.pug
     div(class='third-box box')
         p(class='column-titles' id='task-title') To Do:
         div(class='display-tasks')
