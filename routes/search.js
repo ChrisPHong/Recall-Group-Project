@@ -8,9 +8,10 @@ const { User, Task, List } = db;
 router.get('/', asyncHandler(async (req, res, next) => {
     const { userId } = req.session.auth;
     const tasks = await Task.findAll({
-        where: { userId }
+        where: { userId },
+        order: [['dueDate', 'ASC']]
     })
-    res.render('search', { tasks })
+    res.json({ tasks });
 }));
 
 

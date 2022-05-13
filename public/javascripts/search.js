@@ -1,18 +1,25 @@
-const search = document.querySelectorAll('.searchbar')
-const searchBtn = document.querySelectorAll('.searchbarBtn')
+const search = document.querySelector('.searchbar')
+const searchBtn = document.querySelector('.searchbarBtn')
 
-search[0].addEventListener('input', async (e) => {
-    const value = search[0].value.toLowerCase();
-    const tasks = document.querySelectorAll('.task')
-    tasks.forEach((e) => {
-        let task = e.innerHTML;
-        if (!task.toLowerCase().includes(value)) {
-            e.classList.add('hidden')
-        } else {
-            e.classList.remove('hidden')
-        }
-    })
-    await fetch('/search', {
-        method: 'GET',
-    })
+search.addEventListener('input', async (e) => {
+
+  const res = await fetch('/search');
+  const { tasks } = await res.json();
+  const value = search.value.toLowerCase();
+  const taskContainer = document.querySelectorAll('.task-item');
+  // console.log(tasks[0].children[0].innerText)
+  const nodeList = document.querySelectorAll('.tasks');
+  const listOfTasks = Array.from(nodeList)
+
+  for (let i = 0; i < listOfTasks.length; i++) {
+    let task = listOfTasks[i];
+    let container = taskContainer[i];
+    let content = task.innerHTML;
+
+    if (!content.toLowerCase().includes(value)) {
+      container.style.display = 'none';
+    } else {
+      container.style.display = 'flex'
+    }
+  }
 })
