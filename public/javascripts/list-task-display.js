@@ -9,10 +9,18 @@ for (let i = 0; i < detailBtns.length; i++) {
     const taskList = document.getElementById('all-task-list');
     taskList.classList.add('hidden');
     const res = await fetch(`lists/${listId}`);
-
-    const { tasks, list } = await res.json();
-
+    const { tasks, list, listArray} = await res.json();
     const taskContainer = document.querySelector('.display-tasks');
+
+    const optionValues = listArray.map((lists) =>{
+      const listName = lists.name
+      const listId = lists.id
+
+      return `<option value="${listId}">${listName}</option>`
+
+    })
+
+
     const taskHTML = tasks.map(
       ({ content, id, completed, dueDate, location }) => {
         if (completed === true) {
@@ -47,10 +55,8 @@ for (let i = 0; i < detailBtns.length; i++) {
                                     <input type="text" id="location" name="location" value="${location}"></div></div>
                                     <div class="input-label-field">
                                     <label>List:</label>
-                                     <select name="listId">
-                                        <option value="noList">No List</option>
-                                        <option value="5">Groceries</option>
-                                        <option value="4" selected="selected">Things2</option>
+                                     <select name="listId" class="option-value">
+                                        ${optionValues}
                                         </select></div>
                                 <br>
                                     <div class="button-container"></div>
@@ -94,9 +100,7 @@ for (let i = 0; i < detailBtns.length; i++) {
                                     <div class="input-label-field">
                                     <label>List:</label>
                                      <select name="listId">
-                                        <option value="noList">No List</option>
-                                        <option value="5">Groceries</option>
-                                        <option value="4" selected="selected">Things2</option>
+                                     ${optionValues}
                                         </select></div>
                                 <br>
                                     <div class="button-container"></div>
@@ -171,7 +175,6 @@ const getTaskDetails = (taskId) => {
     const outerFormDiv = document.getElementsByClassName('edit-form');
     const currentDiv = document.getElementById(`div-form-${taskId}`)
     const form = document.getElementById(`detail-form-${taskId}`)
-    console.log(form);
     if (form.classList.contains('hidden')) {
       Array.from(outerFormDiv).forEach(div => {
         div.classList.add('hidden');
@@ -182,7 +185,6 @@ const getTaskDetails = (taskId) => {
       form.classList.add('hidden')
     }
 
-    console.log(form)
 
     const initialListId = form.listId.value;
 

@@ -22,7 +22,7 @@ for (let i = 0; i < detailBtns.length; i++) {
 
     const closeBtn = document.getElementById(`task-close-${taskId}`)
     closeBtn.addEventListener('click', async (closeEvent) => {
-      closeEvent.preventDefault()
+      closeEvent.preventDefault();
       closeEvent.stopPropagation();
       const content = form.content.value;
       const dueDate = form.dueDate.value;

@@ -109,13 +109,15 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res, next) => {
 router.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res, next) => {
+    const { userId } = req.session.auth
     const listId = parseInt(req.params.id, 10);
     const list = await List.findByPk(listId)
     const tasks = await Task.findAll({
       where: { listId: req.params.id },
       order: [['dueDate', 'ASC']]
     });
-    res.json({ tasks, list });
+    const listArray = await List.findAll({ where: { userId } })
+    res.json({ tasks, list, listArray });
   })
 );
 
