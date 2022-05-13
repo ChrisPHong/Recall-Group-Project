@@ -43,15 +43,19 @@ router.post('/', csrfProtection, listValidators, asyncHandler(async (req, res, n
   const lists = await List.findAll({
     where: { userId }
   })
-
+  const tasks = await Task.findAll({
+    where: { userId }
+  })
   if (validatorErrors.isEmpty()) {
     await list.save();
-    res.redirect('/tasks')
+    return req.session.save(() => res.redirect('/tasks'));
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
-    res.render('lists', {
+    res.render('tasks', {
       title: 'Create a List',
       list,
+      task: {},
+      tasks,
       lists,
       errors,
       csrfToken: req.csrfToken(),

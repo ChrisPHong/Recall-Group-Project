@@ -128,7 +128,7 @@ for (let i = 0; i < detailBtns.length; i++) {
 
     const columnTitle = document.getElementById('task-title')
     columnTitle.innerHTML = `
-      ${list.name}
+      <p id='column-two-list-name'>${list.name}</p>
       <p class='list-summary-title'>List Summary:</p>
       <span><p class= 'list-summary-details'>Total Tasks: ${totalTasks}</p></span>
       <span><p class= 'list-summary-details'>Tasks to Complete: ${uncompletedTasks}</p></span>
