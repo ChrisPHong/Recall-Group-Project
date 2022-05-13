@@ -46,7 +46,7 @@ router.post('/', csrfProtection, listValidators, asyncHandler(async (req, res, n
 
   if (validatorErrors.isEmpty()) {
     await list.save();
-    res.redirect('/lists')
+    res.redirect('/tasks')
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
     res.render('lists', {

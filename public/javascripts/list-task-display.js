@@ -20,13 +20,12 @@ for (let i = 0; i < detailBtns.length; i++) {
 
     })
 
-
     const taskHTML = tasks.map(
-      ({ content, id, completed, dueDate, location }) => {
+      ({ content, id, completed, dueDate, location, gitRepoLink }) => {
         if (completed === true) {
           return `
         <ul id='all-task-list'>
-          <div id='list-item-${id}' class='list-item'>
+          <div id='list-item-${id}' class='list-item task-item'>
             <li id='task-${id}' class='tasks'>${content}</li>
           <div class='done-check'>
             <label class='done-label'> done? </label>
@@ -70,7 +69,7 @@ for (let i = 0; i < detailBtns.length; i++) {
         } else {
           return `
           <ul id='all-task-list'>
-            <div id='list-item-${id}' class='list-item'>
+            <div id='list-item-${id}' class='list-item task-item'>
               <li id='task-${id}' class='tasks'>${content}</li>
             <div class='done-check'>
               <label class='done-label'> done? </label>
@@ -113,8 +112,25 @@ for (let i = 0; i < detailBtns.length; i++) {
           `
         }
       });
+
+
+    let completedTasks = 0;
+    let uncompletedTasks = 0;
+    let totalTasks = 0;
+    tasks.forEach(task => {
+      totalTasks += 1;
+      if (task.completed === true) completedTasks += 1;
+      else uncompletedTasks += 1;
+    })
+
     const columnTitle = document.getElementById('task-title')
-    columnTitle.innerText = `${list.name}: `;
+    columnTitle.innerHTML = `
+      ${list.name}
+      <p class='list-summary-title'>List Summary:</p>
+      <span><p class= 'list-summary-details'>Total Tasks: ${totalTasks}</p></span>
+      <span><p class= 'list-summary-details'>Tasks to Complete: ${uncompletedTasks}</p></span>
+      <span><p class= 'list-summary-details'>Finished Tasks: ${completedTasks}</p></span>
+    `
     taskContainer.innerHTML = taskHTML.join('');
 
     const checkBoxes = document.querySelectorAll('.task-checkbox');
@@ -158,7 +174,7 @@ const checkCheckboxStatus = (taskId, checkbox) => {
 
     const data = await res.json()
     if (data.message === 'Success') {
-      console.log(data.task.completed)
+      // console.log(data.task.completed)
       // console.log(contentEle);
     } else {
       // TODO:create elements with error message
