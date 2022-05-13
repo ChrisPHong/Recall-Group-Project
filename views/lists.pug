@@ -15,11 +15,11 @@ block content
         span(class="material-symbols-outlined deleteLists-btn" id=`deleteLists-${list.id}`) delete
         div(class='edit-form' id=`div-form-${list.id}`)
           form(class="edit-forms hidden" id=`edit-form-${list.id}` autocomplete='off')
-            label List Name:
+            //- label New List Name:
             input(type="text", name="name" value=list.name id=`${list.id}-edit-name`)
             span(class="material-symbols-outlined" id=`edit-submit-${list.id}`) done
             span(class="material-symbols-outlined" id=`cancel-submit-${list.id}`) close
-          //- button(id=`edit-submit-${list.id}`) Save Changes
+            //- button(id=`edit-submit-${list.id}` class='hidden')
 
 
         //- div(id=`list-container-${list.id}` class='div-container')

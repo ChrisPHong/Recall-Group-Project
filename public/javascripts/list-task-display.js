@@ -18,7 +18,7 @@ for (let i = 0; i < detailBtns.length; i++) {
         if (completed === true) {
           return `
         <ul id='all-task-list'>
-          <div id='list-item-${id}' class='list-item'>
+          <div id='list-item-${id}' class='list-item task-item'>
             <li id='task-${id}' class='tasks'>${content}</li>
           <div class='done-check'>
             <label class='done-label'> done? </label>
@@ -64,7 +64,7 @@ for (let i = 0; i < detailBtns.length; i++) {
         } else {
           return `
           <ul id='all-task-list'>
-            <div id='list-item-${id}' class='list-item'>
+            <div id='list-item-${id}' class='list-item task-item'>
               <li id='task-${id}' class='tasks'>${content}</li>
             <div class='done-check'>
               <label class='done-label'> done? </label>
