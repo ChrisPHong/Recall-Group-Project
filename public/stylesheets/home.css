@@ -1,32 +1,41 @@
 
 .header-display{
-    background: linear-gradient(to top right, rgba(219, 11, 157, .3), rgba(212, 2, 2, .95));
+    background: linear-gradient(to top right, rgba(219, 11, 157, .3), rgba(51, 51, 51, 0.95));
     border-radius: 5px 5px;
+    margin: 5px;
 }
 
-html{
-    background-color: black;
-}
+
 body{
     background: #121212;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: white;
 }
-/* .main-display{
+.main-display{
 
-
-} */
-.task-item{
-border-top: rgb(255, 255, 255);
-border-bottom: rgb(255, 255, 255);
+display: flex;
+justify-content: space-between;
 }
 
-.box{
+.task-item:hover{
+background-color: black;
+}
+
+.third-box{
+    padding: 40px;
+    background-color: #333333;
+    border: solid black;
+    border-radius: 5px 5px;
+    box-shadow: 5px grey;
+}
+.second-box{
+    padding: 40px;
 background-color: #333333;
 border: solid black;
 border-radius: 5px 5px;
 box-shadow: 5px grey;
 }
+
 .task-form{
     border: solid black 2px;
     background-color: rgb(133, 131, 131);
@@ -36,4 +45,20 @@ box-shadow: 5px grey;
 .task-form:hover{
     background-color: rgb(169, 169, 169);
 
+}
+
+.top-display{
+    display: inline-block;
+    /* justify-content: space-around; */
+    /* justify-content: space-between; */
+    align-self: center;
+    margin: 10px 20px;
+
+}
+
+.create-task-form{
+    /* width: 75%; */
+    border: solid rgb(128, 128, 128, .5) 2px;
+    background: linear-gradient(to top right, rgba(219, 11, 157, .3), rgba(51, 51, 51, 0.95));
+    border-radius: 5px 5px;
 }
