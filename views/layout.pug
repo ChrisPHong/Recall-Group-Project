@@ -41,8 +41,10 @@ html
               a(href='/login' class='loginbtn') Login
               a(href='/signup' class='registerbtn') Register
             div(id='rightNav')
-              form(method='post' action='/demo')
-                button(type='submit') Demo
         div(id='callToAction')
           a(href='/signup' class='callToActionBtn') Sign Up Free
+          form(method='post' action='/demo')
+            button(type='submit' class='callToActionBtnDemo') Demo
+        div(id="landing-text-div")
+          p(id="landing-text") Keeping track of everything you need to do for coding can be difficult. Let Recall help. Introducing the first coding centric task management site made by developers for developers.
     block content
