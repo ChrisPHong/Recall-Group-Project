@@ -29,7 +29,9 @@ for (let i = 0; i < detailBtns.length; i++) {
           return `
         <ul id='all-task-list'>
           <div id='list-item-${id}' class='list-item task-item'>
+          <div class="inner-list-item">
             <li id='task-${id}' class='tasks'>${content}</li>
+          </div>
           <div class='done-check'>
             <label class='done-label'> done? </label>
             <input type='checkbox' name='completed' class='task-checkbox' id='checkbox-${id}' checked>
@@ -73,7 +75,9 @@ for (let i = 0; i < detailBtns.length; i++) {
           return `
           <ul id='all-task-list'>
             <div id='list-item-${id}' class='list-item task-item'>
+            <div class="inner-list-item">
               <li id='task-${id}' class='tasks'>${content}</li>
+            </div>
             <div class='done-check'>
               <label class='done-label'> done? </label>
               <input type='checkbox' name='completed' class='task-checkbox' id='checkbox-${id}'>
@@ -140,8 +144,8 @@ for (let i = 0; i < detailBtns.length; i++) {
 
     if (checkBoxes) {
       checkBoxes.forEach((checkbox) => {
+        console.log('taskId')
         const taskId = checkbox.id.split('-')[1];
-        // console.log(taskId)
         checkbox.addEventListener('change', checkCheckboxStatus(taskId, checkbox))
       })
     }
