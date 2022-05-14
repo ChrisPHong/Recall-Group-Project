@@ -53,7 +53,7 @@ font-family:Verdana, Geneva, Tahoma, sans-serif;
 width: 420px;
 }
 
-.field-text2 {
+/* .field-text2 {
     font-size: 12px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: 420px;
@@ -75,7 +75,7 @@ width: 420px;
         outline: none;
         box-shadow: 0 0 0 4px rgba(21, 156, 228, 0.4);
         color:black;
-      }
+      } */
 
   .no-account-text {
       text-align: center;

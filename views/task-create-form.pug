@@ -1,7 +1,7 @@
 form(action="/tasks" method="post" class='create-task-form' autocomplete="off")
   input(type='hidden' name='_csrf' value=csrfToken)
   //- +field(null, 'content', task.content, null, 'New Task')
-  input(name='content' value=task.content placeholder='New Task...' class='home-inputs')
+  input(name='content' value=task.content placeholder='New Task...' class='home-inputs main-home-input')
   span
     label Due Date
     input(type='date', value=task.dueDate, name='dueDate' class='date-field home-inputs')
@@ -18,4 +18,3 @@ form(action="/tasks" method="post" class='create-task-form' autocomplete="off")
   button(type='submit' class='home-buttons') Add Task
 
   //- mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = null)
-

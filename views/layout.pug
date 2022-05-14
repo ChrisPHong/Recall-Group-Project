@@ -29,8 +29,8 @@ html
 
   body
     if locals.authenticated
-      //- span Welcome #{user.firstName}!
       div(class='header-display')
+        span(class='welcome-guest') Welcome #{user.firstName}!
         form(action='/logout' method='post')
           button(type='submit' class='home-buttons') Logout
     else

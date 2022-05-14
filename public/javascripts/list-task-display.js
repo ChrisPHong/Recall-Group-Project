@@ -141,6 +141,7 @@ for (let i = 0; i < detailBtns.length; i++) {
     if (checkBoxes) {
       checkBoxes.forEach((checkbox) => {
         const taskId = checkbox.id.split('-')[1];
+        // console.log(taskId)
         checkbox.addEventListener('change', checkCheckboxStatus(taskId, checkbox))
       })
     }
