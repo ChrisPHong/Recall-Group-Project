@@ -30,32 +30,71 @@ for (let i = 0; i < detailBtns.length; i++) {
       const gitRepoLink = form.gitRepoLink.value;
       const location = form.location.value;
       const listId = form.listId.value;
-
-      const res = await fetch(`/tasks/${taskId}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          content,
-          dueDate,
-          priority,
-          gitRepoLink,
-          location,
-          listId
+      try {
+        const res = await fetch(`/tasks/${taskId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            content,
+            dueDate,
+            priority,
+            gitRepoLink,
+            location,
+            listId
+          })
         })
-      })
 
-
-      const data = await res.json()
-      if (data.message === 'Success') {
-        console.log(data)
-        // console.log(contentEle);
-        const contentEle = document.getElementById(`task-${taskId}`);
-        contentEle.innerHTML = data.task.content;
-        form.classList.add('hidden');;
-      } else {
-        // TODO:create elements with error message
-        console.log('No work!')
+        const data = await res.json()
+        if (data.message === 'Success') {
+          console.log(data)
+          // console.log(contentEle);
+          const contentEle = document.getElementById(`task-${taskId}`);
+          contentEle.innerHTML = data.task.content;
+          form.classList.add('hidden');;
+        }
+      } catch (e) {
+        alert(
+          `Please enter a value for the 'Task' field`
+        );
       }
+      // if (data.message === 'Success') {
+      //   console.log(data)
+      //   // console.log(contentEle);
+      //   const contentEle = document.getElementById(`task-${taskId}`);
+      //   contentEle.innerHTML = data.task.content;
+      //   form.classList.add('hidden');;
+      // } else {
+      //   console.log('No work!')
+      // }
     })
   })
 }
+
+// const handleErrors = async (err) => {
+//   if (err.status >= 400 && err.status < 600) {
+//     const errorJSON = await err.json();
+//     const errorsContainer = document.querySelector(".errors-container");
+//     let errorsHtml = [
+//       `
+//         <div class="alert alert-danger">
+//             Something went wrong. Please try again.
+//         </div>
+//       `,
+//     ];
+//     const { errors } = errorJSON;
+//     if (errors && Array.isArray(errors)) {
+//       errorsHtml = errors.map(
+//         (message) => `
+//           <div class="alert alert-danger">
+//               ${message}
+//           </div>
+//         `
+//       );
+//     }
+//     errorsContainer.innerHTML = errorsHtml.join("");
+//   } else {
+//     alert(
+//       "Please enter a value for the task field"
+//     );
+//   }
+// };

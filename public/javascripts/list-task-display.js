@@ -41,20 +41,20 @@ for (let i = 0; i < detailBtns.length; i++) {
             <div class="input-label-field">
                 <div>
                     <label for="content">Task: </label>
-                    <input type="text" id="content" name="content" value="${content}">
+                    <input class="home-inputs" type="text" id="content" name="content" value="${content}">
                         <div class="input-label-field">
                             <label>Due Date:</label>
-                            <input type="date" value="${dueDate}" name="dueDate">
+                            <input class="home-inputs" type="date" value="${dueDate}" name="dueDate">
                                 <br>
                                 </div>
                                 <div class="input-label-field"><label>Priority:</label>
                                     <input type="checkbox" name="priority"></div><div class="input-label-field"><div>
                                         <label for="gitRepoLink">Git Repo Link:
                                         </label>
-                                        <input type="text" id="gitRepoLink" name="gitRepoLink" value="${gitRepoLink}"></div></div>
+                                        <input class="home-inputs" type="text" id="gitRepoLink" name="gitRepoLink" value="${gitRepoLink}"></div></div>
                                 <div class="input-label-field"><div>
                                     <label for="location">Location: </label>
-                                    <input type="text" id="location" name="location" value="${location}"></div></div>
+                                    <input class="home-inputs" type="text" id="location" name="location" value="${location}"></div></div>
                                     <div class="input-label-field">
                                     <label>List:</label>
                                      <select name="listId" class="option-value">
@@ -85,20 +85,20 @@ for (let i = 0; i < detailBtns.length; i++) {
             <div class="input-label-field">
                 <div>
                     <label for="content">Task: </label>
-                    <input type="text" id="content" name="content" value="${content}">
+                    <input type="text" id="content" name="content" value="${content}" class="home-inputs">
                         <div class="input-label-field">
                             <label>Due Date:</label>
-                            <input type="date" value="${dueDate}" name="dueDate">
+                            <input class="home-inputs" type="date" value="${dueDate}" name="dueDate">
                                 <br>
                                 </div>
                                 <div class="input-label-field"><label>Priority:</label>
                                     <input type="checkbox" name="priority"></div><div class="input-label-field"><div>
                                         <label for="gitRepoLink">Git Repo Link:
                                         </label>
-                                        <input type="text" id="gitRepoLink" name="gitRepoLink" value="${gitRepoLink}"></div></div>
+                                        <input class="home-inputs" type="text" id="gitRepoLink" name="gitRepoLink" value="${gitRepoLink}"></div></div>
                                 <div class="input-label-field"><div>
                                     <label for="location">Location: </label>
-                                    <input type="text" id="location" name="location" value="${location}"></div></div>
+                                    <input class="home-inputs" type="text" id="location" name="location" value="${location}"></div></div>
                                     <div class="input-label-field">
                                     <label>List:</label>
                                      <select name="listId">

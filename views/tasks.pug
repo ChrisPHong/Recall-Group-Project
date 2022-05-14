@@ -3,26 +3,26 @@ extends layout.pug
 include utils.pug
 include task-detail.pug
 block content
-  include search-form.pug
+  +validationErrorSummary(errors)
+  .errors-container
   div(class='top-display')
     div(class='first-box')
-      +validationErrorSummary(errors)
       div(class='create-task')
         include task-create-form
   div(class='main-display')
     div(class='second-box box')
       p(class='column-titles') My Lists:
-      a(href='/tasks' class='all-tasks-link') View all of My Tasks
       include lists.pug
     div(class='third-box box')
         p(class='column-titles' id='task-title') To Do:
+        include search-form.pug
         div(class='display-tasks')
         ul(id='all-task-list')
           each task in tasks
             div(id=`list-item-${task.id}` class='task-item')
-              div(class='inner-list-item')
+              span(class='inner-list-item')
                 li(class='tasks' id=`task-${task.id}`)= task.content
-              div(class='done-check')
+              span(class='done-check')
                 label(class='done-label') done?
                 if (task.completed === true)
                   input(type='checkbox' name='completed' class='task-checkbox' id=`checkbox-${task.id}` checked)

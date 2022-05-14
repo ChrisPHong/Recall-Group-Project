@@ -1,14 +1,21 @@
 form(action="/tasks" method="post" class='create-task-form' autocomplete="off")
   input(type='hidden' name='_csrf' value=csrfToken)
-  +field('New Task', 'content', task.content)
-  label Due Date
-  input(type='date', value=task.dueDate, name='dueDate' class='date-field')
+  //- +field(null, 'content', task.content, null, 'New Task')
+  input(name='content' value=task.content placeholder='New Task...' class='home-inputs')
+  span
+    label Due Date
+    input(type='date', value=task.dueDate, name='dueDate' class='date-field home-inputs')
   label Priority
   input(type='checkbox' name='priority')
-  +field('Git Repo Link', 'gitRepoLink', task.gitRepoLink)
-  +field('Location', 'location', task.location)
+  //- +field(null, 'gitRepoLink', task.gitRepoLink, null, 'Link')
+  input(name='gitRepoLink' value=task.gitRepoLink placeholder='Link...' class='home-inputs')
+  //- +field(null, 'location', task.location, null, 'Location')
+  input(name='location' value=task.location placeholder='Location...' class='home-inputs')
   select(name="listId")
     option(value='noList') No List
     each list in lists
         option(value=list.id) #{list.name}
-  button(type='submit') Add Task
+  button(type='submit' class='home-buttons') Add Task
+
+  //- mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = null)
+
