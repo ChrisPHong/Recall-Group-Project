@@ -27,6 +27,7 @@
 #rightBtns {
     display: flex;
     align-items: center;
+    padding: 30px;
 }
 
 #leftNav {
@@ -37,37 +38,183 @@
 }
 
 
-.loginbtn {
-    color: azure;
-    margin-right: 15px;
-    border-radius: 2px;
-    text-decoration: none;
-    padding: 3px;
-    font-size: 16px;
-}
-
+.loginbtn,
 .registerbtn {
-    color: azure;
-    border-radius: 2px;
+    --c: no-repeat linear-gradient(#0000007b 0 0);
+    background:
+      var(--c)  calc(-101% + var(--p,0%)) 100%,
+      var(--c)  calc( 201% - var(--p,0%)) 0;
+    background-size: 50.1% var(--p,.08em);
+    transition: .3s var(--t,0s), background-position .3s calc(.3s - var(--t,0s));
+    margin: 5px;
+    border-radius: 10px;
+    padding: 10px;
     text-decoration: none;
-    padding: 3px;
-    border: azure solid 4px;
-    border-radius: 3px;
-    font-size: 16px;
-}
+  }
+
+  .registerbtn{
+    --c: no-repeat linear-gradient(#00000078 0 0 );
+    background:
+      var(--c)  calc(-101% + var(--p,0%)) 100%,
+      var(--c)  calc( 201% - var(--p,0%)) 0;
+    background-size: 50.1% var(--p,.08em);
+    transition: .3s var(--t,0s), background-position .3s calc(.3s - var(--t,0s));
+    margin: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    border: solid white 2px
+  }
+  .loginbtn:hover,
+  .registerbtn:hover {
+    --p: 101%;
+    --t: 0.3s;
+    color: #fff;
+  }
 
 #callToAction {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    margin-top: 30px;
 }
 
 .callToActionBtn {
-    background: linear-gradient(to top right, rgba(255, 0, 0, 0), rgba(212, 2, 2, .95));
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 15px;
+    letter-spacing: 5px;
+    font-weight: bold;
+    position: relative;
+    background-color: #ff003c;
+    border: none;
+    color: #fff;
+    padding-top: 10px;
+    /* text-align: center; */
+    transition-duration: 0.4s;
+    text-align: center;
     text-decoration: none;
-    color: azure;
-    padding: 15px;
-    margin-top: 20px;
-    border: black solid 2px;
+    box-shadow: 0 5px 15px #193047;
+    border-radius: 4px;
+    width: 150px;
+    height: 50px;
+    margin: 20px
+  }
+
+  .callToActionBtnDemo {
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 15px;
+    letter-spacing: 5px;
+    font-weight: bold;
+    position: relative;
+    background-color: #8c21d8;
+    border: none;
+    color: #fff;
+    /* text-align: center; */
+    transition-duration: 0.4s;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 5px 15px #193047;
+    border-radius: 4px;
+    width: 150px;
+    height: 50px;
+    margin: 20px
+  }
+
+  .callToActionBtn:hover {
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 2px 10px 5px #ff0000;
+    color: #000;
+  }
+
+  .callToActionBtnDemo:hover {
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 2px 10px 5px #ff0000;
+    color: #000;
+  }
+
+  .callToActionBtn:after {
+    content: "";
+    background: #bc1a5d;
+    display: block;
+    position: absolute;
+    /* padding-top: 300%;
+    padding-left: 350%; */
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+
+  .callToActionBtnDemo:hover {
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 2px 10px 5px #5a1592;
+    color: #000;
+  }
+
+  .callToActionBtnDemo:after {
+  content: "";
+  background: #bc1a5d;
+  display: block;
+  position: absolute;
+  /* padding-top: 300%;
+  padding-left: 350%; */
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+  }
+
+  .callToActionBtn:active:after,
+  .callToActionBtnDemo:active:after  {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
+
+
+
+  .callToActionBtn:focus,
+  .callToActionBtnDemo:focus { outline:0; }
+
+
+
+#landing-text-div {
+    width: 1000px;
+    text-align: center;
+    background: rgba(0, 0, 0, .20);
+    padding: 25px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: center;
+    line-height: 25px;
+    margin-top: 450px;
+    transition-duration: 0.4s;
     border-radius: 3px;
+}
+
+#landing-text-div:hover {
+    width: 1000px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.709);
+    padding: 25px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: center;
+    line-height: 25px;
+    margin-top: 450px;
+    border-radius: 3px;
+}
+
+#landing-text {
+    font-size: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
