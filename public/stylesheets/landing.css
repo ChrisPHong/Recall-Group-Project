@@ -184,7 +184,7 @@
 
 
 #landing-text-div {
-    width: 1000px;
+    width: 55%;
     text-align: center;
     background: rgba(0, 0, 0, .20);
     padding: 25px;
@@ -192,7 +192,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: center;
+    position: fixed;
+    left: 430px;
     line-height: 25px;
     margin-top: 450px;
     transition-duration: 0.4s;
@@ -200,7 +201,7 @@
 }
 
 #landing-text-div:hover {
-    width: 1000px;
+    width: 55%;
     text-align: center;
     background: rgba(0, 0, 0, 0.709);
     padding: 25px;
@@ -208,7 +209,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: center;
+    position: fixed;
     line-height: 25px;
     margin-top: 450px;
     border-radius: 3px;
