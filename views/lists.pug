@@ -2,9 +2,12 @@ include utils.pug
 block content
   form(action="/lists", method="post" autocomplete='off')
     input(type="hidden" name="_csrf" value=csrfToken)
-    label List Name:
-    input(type="text", name="name")
-    button(type="submit") Submit
+    //- label List Name:
+    input(type="text" name="name" placeholder='New List...' class='home-inputs')
+    button(type="submit" class='home-buttons') Submit
+    br
+    .all-tasks-link
+      a(href='/tasks' class='all-tasks-link-text') View all of My Tasks
   ul
     each list in lists
       div(class='list-item div-container' id=`list-container-${list.id}`)
@@ -15,7 +18,7 @@ block content
         div(class='edit-form' id=`div-list-form-${list.id}`)
           form(class="edit-forms hidden" id=`edit-form-${list.id}` autocomplete='off')
             //- label New List Name:
-            input(type="text", name="name" value=list.name id=`${list.id}-edit-name`)
+            input(type="text", name="name" value=list.name id=`${list.id}-edit-name` class='home-inputs')
             span(class="material-symbols-outlined" id=`edit-submit-${list.id}`) done
             span(class="material-symbols-outlined" id=`cancel-submit-${list.id}`) close
             //- button(id=`edit-submit-${list.id}` class='hidden')
