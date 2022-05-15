@@ -1,0 +1,26 @@
+#aboutUs-body {
+    margin: 0px;
+    min-width: 1000px;
+}
+
+#aboutUs-main-container {
+    background-color: aquamarine;
+    padding: 25px;
+    height: 100vh;
+}
+
+#aboutUs-nav-bar {}
+
+#aboutUs-header {
+    background-image: url(../img/aboutUs_main_img.jpg);
+    height: 700px;
+    background-size: 120%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+#aboutUs-header-text-container {
+    background-color: rgba(0, 0, 0, .6);
+    position: relative;
+    bottom: 0px;
+}
