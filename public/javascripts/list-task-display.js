@@ -15,7 +15,7 @@ for (let i = 0; i < detailBtns.length; i++) {
       console.log('tasks', tasks);
       const listName = lists.name
       const listId = lists.id
-      if(tasks.length > 0){
+      if (tasks.length > 0) {
 
         //This goes through the array and checks to see if there are any tasks in the list.
         for (let i = 0; i < tasks.length; i++) {
@@ -203,6 +203,7 @@ const checkCheckboxStatus = (taskId, checkbox) => {
 }
 
 
+
 const getTaskDetails = (taskId) => {
   return async (e) => {
     // e.stopPropagation();
@@ -223,7 +224,28 @@ const getTaskDetails = (taskId) => {
     const initialListId = form.listId.value;
     const actualInitialId = initialListId;
 
+    const deleteBtn = document.getElementById(`task-delete-${taskId}`)
+    deleteBtn.addEventListener('click', async (deleteButton) => {
+      deleteButton.stopPropagation();
+      deleteButton.preventDefault();
+
+      const res = await fetch(`/tasks/${taskId}`, {
+        method: 'DELETE'
+      })
+      const data = await res.json()
+      if (data.message === 'Success') {
+        const taskDetails = document.getElementById(`detail-form-${taskId}`);
+        const container = document.getElementById(`list-item-${taskId}`);
+        container.remove();
+        taskDetails.remove();
+      } else {
+
+      }
+
+    })
+
     const closeBtn = document.getElementById(`task-close-${taskId}`)
+    console.log('this is the delete button!', closeBtn);
     closeBtn.addEventListener('click', async (closeEvent) => {
       closeEvent.preventDefault()
       closeEvent.stopPropagation();
