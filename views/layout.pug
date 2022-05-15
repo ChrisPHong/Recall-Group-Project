@@ -14,7 +14,7 @@ html
     link(rel="stylesheet", href="/stylesheets/landing.css")
     link(rel="stylesheet", href="/stylesheets/login.css")
     link(rel="stylesheet", href="/stylesheets/signup.css")
-    link(rel="stylesheet", href="/stylesheets/home.css")
+    link(rel="stylesheet", href="/stylesheets/home2.css")
     script(src="/javascripts/index.js" type="module" defer)
     script(src="/javascripts/postEdit.js" type="module")
     script(src="/javascripts/postDelete.js" type="module")
@@ -30,7 +30,10 @@ html
   body
     if locals.authenticated
       div(class='header-display')
+        div(id='logoContainerHome')
+          img(src="/img/RECALL4.png", alt="logo" id='homelogo' class='home-page-image')
         span(class='welcome-guest') Welcome #{user.firstName}!
+        div(id='logoutBtn')
         form(action='/logout' method='post')
           button(type='submit' class='home-buttons') Logout
     else
