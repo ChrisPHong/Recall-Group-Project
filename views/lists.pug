@@ -8,7 +8,7 @@ block content
     br
     .all-tasks-link
       a(href='/tasks' class='all-tasks-link-text') View all of My Tasks
-  ul
+  ul(id='list-display-home')
     each list in lists
       div(class='list-item div-container' id=`list-container-${list.id}`)
         li(class='lists' id=`name-${list.id}`)= list.name
