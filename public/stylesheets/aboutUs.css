@@ -17,10 +17,16 @@
     background-size: 120%;
     background-position: bottom;
     background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 #aboutUs-header-text-container {
-    background-color: rgba(0, 0, 0, .6);
-    position: relative;
-    bottom: 0px;
+    background-color: rgba(40, 40, 40, .6);
+    border-radius: 15px;
+    padding: 25px;
+    position: absolute;
+    bottom: 200px;
+    color: white;
 }
