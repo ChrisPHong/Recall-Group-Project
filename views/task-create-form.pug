@@ -16,6 +16,6 @@ form(action="/tasks" method="post" class='create-task-form' autocomplete="off")
     option(value='noList') No List
     each list in lists
         option(value=list.id) #{list.name}
-  button(type='submit' class='home-buttons') Add Task
+  button(type='submit' class='home-buttons button-49' id='add-task-id') Add Task
 
   //- mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = null)
