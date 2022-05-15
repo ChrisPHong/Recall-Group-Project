@@ -12,13 +12,24 @@ for (let i = 0; i < detailBtns.length; i++) {
     const taskContainer = document.querySelector('.display-tasks');
 
     const optionValues = listArray.map((lists) => {
+      console.log('tasks', tasks);
       const listName = lists.name
       const listId = lists.id
-      if (listId === tasks.listId) {
-        return `<option selected value="${listId}">${listName}</option>`
+      if(tasks.length > 0){
+
+        //This goes through the array and checks to see if there are any tasks in the list.
+        for (let i = 0; i < tasks.length; i++) {
+          let task = tasks[i];
+
+          if (listId === task.listId) {
+            return `<option selected value="${listId}">${listName}</option>`
+          } else {
+            return `<option value="${listId}">${listName}</option>`
+
+          }
+        }
       } else {
         return `<option value="${listId}">${listName}</option>`
-
       }
     })
 
