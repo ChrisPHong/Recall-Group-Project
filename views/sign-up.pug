@@ -10,17 +10,17 @@ block content
       form(method='post' action='/signup')
         div(id='signupForm')
           input(type='hidden' name='_csrf' value=csrfToken)
-          div
-            +field('First Name', 'firstName', user.firstName)
-          div
-            +field('Last Name', 'lastName', user.lastName)
-          div
-            +field('Email', 'emailAddress', user.emailAddress, 'email')
-          div
-            +field('Password', 'password', user.hashedPassword, 'password')
-          div
-            +field('Confirm Password', 'confirmPassword', '', 'password')
-          div
-            button(type='submit') Sign Up!
-      a(href='/login') Already have an account?
+          div(class='signup-div')
+            +field('First Name', 'firstName', user.firstName)(class='field-text')
+          div(class='signup-div')
+            +field('Last Name', 'lastName', user.lastName)(class='field-text')
+          div(class='signup-div')
+            +field('Email', 'emailAddress', user.emailAddress, 'email')(class='field-text')
+          div(class='signup-div')
+            +field('Password', 'password', user.hashedPassword, 'password')(class='field-text')
+          div(class='signup-div')
+            +field('Confirm Password', 'confirmPassword', '', 'password')(class='field-text')
+          div(class='signup-div-bottom')
+            button(type='submit' class='button2-49') Sign Up!
+      a(href='/login' class='login-nav') Already have an account?
     img(src="/img/RECALL4.png", alt="logo.gif" id='signupImg')
