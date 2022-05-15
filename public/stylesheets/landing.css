@@ -192,10 +192,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    left: 430px;
+    position: relative;
     line-height: 25px;
-    margin-top: 450px;
+    margin-top: 23%;
     transition-duration: 0.4s;
     border-radius: 3px;
 }
@@ -209,10 +208,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
+    position: relative;
     line-height: 25px;
     margin-top: 450px;
     border-radius: 3px;
+    margin-top: 23%;
 }
 
 #landing-text {
