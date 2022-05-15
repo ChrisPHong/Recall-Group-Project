@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db/models');
 const { asyncHandler, csrfProtection, check, validationResult } = require('./utils')
-const { loginUser, logoutUser } = require('../auth')
+const { loginUser, logoutUser, requireAuth } = require('../auth')
 const { Task, List } = db;
 
 // Create a list for all of the lists so that we can see all of them
@@ -10,7 +10,7 @@ const { Task, List } = db;
 
 // Everything below is for creating a New List
 
-router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
+router.get('/', csrfProtection, requireAuth, asyncHandler(async (req, res, next) => {
   const { userId } = req.session.auth
   const lists = await List.findAll({
     where: { userId },
