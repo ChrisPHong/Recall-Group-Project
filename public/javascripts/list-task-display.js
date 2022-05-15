@@ -30,12 +30,8 @@ for (let i = 0; i < detailBtns.length; i++) {
         }
       } else {
         return `<option value="${listId}">${listName}</option>`
-
       }
-
     })
-
-
 
     const taskHTML = tasks.map(
       ({ content, id, completed, dueDate, location, gitRepoLink }) => {
