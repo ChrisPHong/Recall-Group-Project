@@ -3,10 +3,18 @@
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
+   background: linear-gradient(to top right, rgb(122, 11, 192, .3), rgba(193, 110, 245, 0.95));
   background-color: rgb(122, 11, 192);
   padding: 1em;
   /* border-radius: 5px; */
   margin: 0 0 2em;
+}
+
+#logoContainerHome {
+  margin: 0 2em;
+}
+.home-page-image {
+  height: 5em;
 }
 
 body {
@@ -21,18 +29,15 @@ body {
   justify-content: center;
 }
 
-.tasks, .lists {
-  width: 200%;
-}
 
 .task-item,
 .list-item,
 .all-tasks-link
- {
+{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: .25em 0;
+  padding: .25em .25em;
   border: transparent solid 1px;
   border-radius: .50em;
 }
@@ -42,6 +47,9 @@ body {
 .all-tasks-link:hover {
   background-color: #252424;
   cursor: grab;
+}
+.tasks, .lists {
+  width: 200%;
 }
 
 .button-container {
@@ -73,11 +81,18 @@ body {
 
 .all-tasks-link-text {
   text-decoration: none;
+  color: #17DFE9;
+}
+
+.inner-list-item {
+  display: inline-flex;
+  align-items: center;
 }
 
 .third-box {
   position: relative;
   padding: 40px;
+  height: 35em;
   background-color: #333333;
   /* border: solid black; */
   border-radius: 5px 5px;
@@ -85,6 +100,7 @@ body {
 }
 .second-box {
   padding: 40px;
+  height: 30em;
   background-color: #333333;
   /* border: solid black; */
   border-radius: 5px;
@@ -175,6 +191,7 @@ select {
   border: none;
   border-radius: .75em;
   padding: .5em;
+  margin: .5em;
 }
 
 ::placeholder {
@@ -194,18 +211,17 @@ select {
   background-color: #F61B9A;
 }
 
-/* .searchbar {
+.searchbar.home-inputs {
   background: #454343;
-  border: white 1px solid;
   color: white;
-  border: none;
+  border: transparent;
   border-radius: .75em;
-  padding: .75em;
-  margin: 0 1em;
-} */
+  padding: .75em 2em .75em 1em;
+  margin: 0 1em 1em;
+}
 
 .task-detail-btn {
-  background-color: #16F1F4;
+  background-color: #FFA703;
   border: transparent;
   margin: 0 1em;
   border-radius: .75em;
@@ -214,7 +230,12 @@ select {
 }
 
 .task-detail-btn:hover {
-  background-color: #1ADEE1;
+  background-color: #E9A017;
   border: transparent;
   margin: 0 1em;
+}
+
+.task-bullets {
+  color: #FFA703;
+  padding: 0 .2em;
 }

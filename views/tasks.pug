@@ -5,8 +5,8 @@ include task-detail.pug
 block content
   +validationErrorSummary(errors)
   .errors-container
-  div(id='logoContainer')
-    img(src="/img/RECALL4.png", alt="logo" id='logo')
+  div(id='logoContainerHome')
+    img(src="/img/RECALL4.png", alt="logo" id='logo' class='home-page-image')
   div(class='top-display')
     div(class='first-box')
       div(class='create-task')
@@ -23,6 +23,7 @@ block content
           each task in tasks
             div(id=`list-item-${task.id}` class='task-item')
               div(class='inner-list-item')
+                span(class="material-symbols-outlined task-bullets") atr
                 li(class='tasks' id=`task-${task.id}`)= task.content
               div(class='done-check')
                 label(class='done-label') done?
