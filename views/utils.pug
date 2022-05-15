@@ -1,8 +1,8 @@
 mixin validationErrorSummary(errors)
   if errors
-    div
-      p The following error(s) occurred:
-      ul
+    div(id='error-div')
+      p(id='error-p') The following error(s) occurred:
+      ul(id='error-ul')
         each error in errors
           li= error
 
