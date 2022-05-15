@@ -1,15 +1,39 @@
 #aboutUs-body {
     margin: 0px;
     min-width: 1000px;
+    font-family: "Roboto", sans-serif;
 }
 
 #aboutUs-main-container {
-    background-color: aquamarine;
+    background-color: rgb(19, 19, 19);
     padding: 25px;
     height: 100vh;
 }
 
-#aboutUs-nav-bar {}
+#aboutUs-nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#aboutUs-logo {
+    height: 100px;
+}
+
+#aboutUs-anchor {
+    text-decoration: none;
+
+}
+
+#aboutUs-landing-redirect {
+    color: white;
+    border: white solid 2px;
+    border-radius: 10px;
+    padding: 10px;
+}
 
 #aboutUs-header {
     background-image: url(../img/aboutUs_main_img.jpg);
@@ -22,11 +46,219 @@
     justify-content: center;
 }
 
+#aboutUs-aboutUs {
+    padding-top: 100px;
+    color: white;
+    font-size: 150px;
+    font-weight: bolder;
+    text-shadow: 2px 7px #000000;
+}
+
 #aboutUs-header-text-container {
-    background-color: rgba(40, 40, 40, .6);
-    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
     padding: 25px;
     position: absolute;
-    bottom: 200px;
+    bottom: 150px;
     color: white;
+    font-weight: bold;
+}
+
+#aboutUs-main-content {
+    background-color: rgb(49, 49, 49);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#aboutUs-info-container {
+    background-color: rgb(65, 65, 65);
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 10px;
+}
+
+#aboutUs-connor {
+    background-color: rgb(214, 214, 214);
+    /* align-self: flex-start; */
+    margin: 65px;
+    padding: 20px;
+    border-bottom-right-radius: 10px;
+    max-width: 47%;
+    height: auto;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+#ab1-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#connor-img {
+    background-image: url(../img/connor.jpg);
+    width: 100px;
+    height: 115px;
+    background-size: 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding: 20px;
+    border-radius: 50%;
+}
+
+#ab1-name {
+    text-decoration: underline overline;
+    text-decoration-thickness: 3px;
+    text-decoration-style: double;
+    text-underline-offset: 1px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+#ab1-bio {
+    padding: 20px;
+}
+
+#aboutUs-chris {
+    background-color: rgb(214, 214, 214);
+    align-self: flex-end;
+    margin: 65px;
+    padding: 20px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    max-width: 47%;
+    height: auto;
+    margin-bottom: 30px;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+}
+
+#ab2-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#chris-img {
+    background-image: url(../img/chris.jpg);
+    width: 100px;
+    height: 115px;
+    background-size: 130%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding: 20px;
+    border-radius: 50%;
+}
+
+#ab2-name {
+    text-decoration: underline overline;
+    text-decoration-thickness: 3px;
+    text-decoration-style: double;
+    text-underline-offset: 3px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+#ab2-bio {
+    padding: 20px;
+}
+
+#aboutUs-patrick {
+    background-color: rgb(214, 214, 214);
+    align-self: flex-start;
+    margin: 65px;
+    padding: 20px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    max-width: 47%;
+    height: auto;
+    margin-bottom: 30px;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+}
+
+#ab3-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#patrick-img {
+    background-image: url(../img/Patrick.jpg);
+    width: 100px;
+    height: 115px;
+    background-size: 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding: 20px;
+    border-radius: 50%;
+}
+
+#ab3-name {
+    text-decoration: underline overline;
+    text-decoration-thickness: 3px;
+    text-decoration-style: double;
+    text-underline-offset: 1px;
+    font-weight: bold;
+    padding: 20px;
+    width: 110px;
+}
+
+#ab3-bio {
+    padding: 20px;
+}
+
+#aboutUs-walker {
+    background-color: rgb(214, 214, 214);
+    align-self: flex-end;
+    margin: 65px;
+    padding: 20px;
+    border-top-left-radius: 10px;
+    max-width: 47%;
+    height: auto;
+    margin-bottom: 30px;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+}
+
+#ab4-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#walker-img {
+    background-image: url(../img/walker.jpg);
+    width: 100px;
+    height: 115px;
+    background-size: 115%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding: 20px;
+    border-radius: 50%;
+}
+
+#ab4-name {
+    text-decoration: underline overline;
+    text-decoration-thickness: 3px;
+    text-decoration-style: double;
+    text-underline-offset: 1px;
+    font-weight: bold;
+    padding: 20px;
+    width: 110px;
+}
+
+#ab4-bio {
+    padding: 20px;
 }
