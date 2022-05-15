@@ -5,13 +5,13 @@
     align-items: center;
     background-color: black;
     padding: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
     /* border-radius: 5px; */
 }
 
 #logoContainerHome {
-    height: 75px;
+    height: 60px;
 }
 
 #homelogo {
@@ -26,17 +26,9 @@ body {
     background: #121212;
     font-family: "Roboto", sans-serif;
     color: white;
+    min-width: 950px;
+    overflow: auto;
 }
-
-.main-display {
-    margin: 0;
-    font-family: "Roboto", sans-serif;
-    display: inline-flex;
-    justify-content: center;
-    background-color: #17DFE9;
-    height: unset
-}
-
 
 .task-item,
 .list-item,
@@ -70,7 +62,7 @@ body {
 
 .column-titles {
     text-align: left;
-    color: #1ADEE1;
+    color: #38b6ff;
 }
 
 .list-summary-details {
@@ -90,7 +82,7 @@ body {
 
 .all-tasks-link-text {
     text-decoration: none;
-    color: #17DFE9;
+    color: #38b6ff;
 }
 
 .inner-list-item {
@@ -98,22 +90,42 @@ body {
     align-items: center;
 }
 
-.third-box {
-    position: relative;
-    padding: 40px;
-    height: 35em;
-    background-color: #333333;
-    /* border: solid black; */
-    border-radius: 5px 5px;
-    box-shadow: 5px grey;
+.main-display {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    background-color: #1f1f1f;
+    height: 1000px;
 }
+
 
 .second-box {
     padding: 40px;
-    height: 30em;
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 2px;
+    height: 980px;
     background-color: #333333;
     /* border: solid black; */
-    border-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 5px grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.third-box {
+    position: relative;
+    width: 50%;
+    padding: 40px;
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 980px;
+    background-color: #333333;
+    /* border: solid black; */
+    border-radius: 5px 5px;
     box-shadow: 5px grey;
 }
 
@@ -161,14 +173,24 @@ body {
     border-radius: 5px;
 }
 
+.lists-home {
+    max-width: inherit;
+}
+
+.home-inputs {
+    max-width: inherit;
+}
+
 input.home-inputs {
     background: #454343;
     /* border: white 1px solid; */
     color: white;
     border: none;
     border-radius: .75em;
-    padding: .25em;
-    margin: .5em 1em .75em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .div-container {
@@ -208,7 +230,7 @@ select {
 }
 
 .home-buttons {
-    background-color: #FA58B6;
+    background-color: #ed009c;
     border: transparent;
     margin: 0 1em;
     border-radius: .75em;

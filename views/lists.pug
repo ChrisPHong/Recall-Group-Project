@@ -1,6 +1,6 @@
 include utils.pug
 block content
-  form(action="/lists", method="post" autocomplete='off')
+  form(action="/lists", method="post" autocomplete='off' id='lists-home')
     input(type="hidden" name="_csrf" value=csrfToken)
     //- label List Name:
     input(type="text" name="name" placeholder='New List...' class='home-inputs')

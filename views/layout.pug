@@ -34,8 +34,8 @@ html
           img(src="/img/RECALL4.png", alt="logo" id='homelogo' class='home-page-image')
         span(class='welcome-guest') Welcome #{user.firstName}!
         div(id='logoutBtn')
-        form(action='/logout' method='post')
-          button(type='submit' class='home-buttons') Logout
+          form(action='/logout' method='post')
+            button(type='submit' class='home-buttons') Logout
     else
       div(id='wrapper1')
         div(id='landingNav')
