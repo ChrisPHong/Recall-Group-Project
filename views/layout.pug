@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title="Recall"
+    title="Recall- The Only Task App You'll Ever Need!"
     link(rel="preconnect" href="https://fonts.googleapis.com")
     link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
     link(href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet")
@@ -29,8 +29,8 @@ html
 
   body
     if locals.authenticated
-      //- span Welcome #{user.firstName}!
       div(class='header-display')
+        span(class='welcome-guest') Welcome #{user.firstName}!
         form(action='/logout' method='post')
           button(type='submit' class='home-buttons') Logout
     else

@@ -18,9 +18,10 @@ block content
         div(class='edit-form' id=`div-list-form-${list.id}`)
           form(class="edit-forms hidden" id=`edit-form-${list.id}` autocomplete='off')
             //- label New List Name:
-            input(type="text", name="name" value=list.name id=`${list.id}-edit-name` class='home-inputs')
-            span(class="material-symbols-outlined" id=`edit-submit-${list.id}`) done
-            span(class="material-symbols-outlined" id=`cancel-submit-${list.id}`) close
+            div(class='list-edit-form')
+              input(type="text", name="name" value=list.name id=`${list.id}-edit-name` class='home-inputs')
+              span(class="material-symbols-outlined" id=`edit-submit-${list.id}`) done
+              span(class="material-symbols-outlined" id=`cancel-submit-${list.id}`) close
             //- button(id=`edit-submit-${list.id}` class='hidden')
 
 

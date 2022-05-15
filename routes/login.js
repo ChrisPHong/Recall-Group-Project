@@ -60,22 +60,26 @@ router.post('/logout', asyncHandler(async (req, res) => {
     const { userId } = req.session.auth;
     const user = await User.findByPk(userId);
     logoutUser(req, res);
-    if (user.emailAddress === 'Demo@demo.demo') {
-        user.destroy()
-    }
+    // if (user.emailAddress === 'Demo@demo.demo') {
+    //     user.destroy()
+    // }
     req.session.save(() => res.redirect('/'))
 }));
 
 router.post('/demo', asyncHandler(async (req, res) => {
-    const hashedPassword = await bcrypt.hash('demo', 10);
-    const user = await User.create({
-        firstName: 'Guest',
-        lastName: 'Demo',
-        emailAddress: 'Demo@demo.demo',
-        hashedPassword
-    });
+
+    const user = await User.findOne({ where: { emailAddress: 'demo@demo.demo' } });
     loginUser(req, res, user);
-    return res.redirect('/tasks');
+    return req.session.save(() => res.redirect('/tasks'));
+    // const hashedPassword = await bcrypt.hash('demo', 10);
+    // const user = await User.create({
+    //     firstName: 'Guest',
+    //     lastName: 'Demo',
+    //     emailAddress: 'Demo@demo.demo',
+    //     hashedPassword
+    // });
+    // loginUser(req, res, user);
+    // return res.redirect('/tasks');
 }));
 
 
