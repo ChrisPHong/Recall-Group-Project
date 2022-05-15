@@ -32,7 +32,7 @@ html
     if locals.authenticated
       div(class='header-display')
         div(id='logoContainerHome')
-          img(src="/img/RECALL4.png", alt="logo" id='homelogo' class='home-page-image')
+          img(src="/img/logo.png", alt="logo" id='homelogo' class='home-page-image')
         span(class='welcome-guest') Welcome to Recall, #{user.firstName}! Your tasks are waiting...
         div(id='logoutBtn')
           form(action='/logout' method='post')
