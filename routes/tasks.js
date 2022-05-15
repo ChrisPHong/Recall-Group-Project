@@ -3,8 +3,10 @@ const router = express.Router();
 const db = require('../db/models');
 const { asyncHandler, handleValidationErrors, csrfProtection, check, validationResult } = require('./utils')
 const { User, Task, List, ListTask } = db;
+const { requireAuth } = require('../auth')
 
-router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
+
+router.get('/', csrfProtection, requireAuth, asyncHandler(async (req, res, next) => {
   const { userId } = req.session.auth;
   const tasks = await Task.findAll({
     where: { userId },
