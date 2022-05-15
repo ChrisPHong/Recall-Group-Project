@@ -8,20 +8,34 @@ for (let i = 0; i < detailBtns.length; i++) {
     const taskList = document.getElementById('all-task-list');
     taskList.classList.add('hidden');
     const res = await fetch(`lists/${listId}`);
-    const { tasks, list, listArray} = await res.json();
+    const { tasks, list, listArray } = await res.json();
     const taskContainer = document.querySelector('.display-tasks');
 
-    const optionValues = listArray.map((lists) =>{
+    const optionValues = listArray.map((lists) => {
+      console.log('tasks', tasks);
       const listName = lists.name
       const listId = lists.id
-        if (listId === tasks.listId){
-          return `<option selected value="${listId}">${listName}</option>`
-        } else{
-          return `<option value="${listId}">${listName}</option>`
+      if(tasks.length > 0){
 
+        //This goes through the array and checks to see if there are any tasks in the list.
+        for (let i = 0; i < tasks.length; i++) {
+          let task = tasks[i];
+
+          if (listId === task.listId) {
+            return `<option selected value="${listId}">${listName}</option>`
+          } else {
+            return `<option value="${listId}">${listName}</option>`
+
+          }
         }
+      } else {
+        return `<option value="${listId}">${listName}</option>`
+
+      }
 
     })
+
+
 
     const taskHTML = tasks.map(
       ({ content, id, completed, dueDate, location, gitRepoLink }) => {
@@ -224,15 +238,15 @@ const getTaskDetails = (taskId) => {
       const location = form.location.value;
       const listId = form.listId.value;
 
-        console.log(initialListId, 'initialListId')
-        console.log(listId, 'changed list ID')
+      console.log(initialListId, 'initialListId')
+      console.log(listId, 'changed list ID')
 
-        if(actualInitialId !== listId){
+      if (actualInitialId !== listId) {
         console.log('Remove this guy!');
         const getTask = document.getElementById(`list-item-${taskId}`)
-        getTask.style.display='none';
+        getTask.style.display = 'none';
 
-      } else{
+      } else {
         console.log('Nothing Happens');
         // console.log(initialListId, 'initial')
         // console.log(listId, 'actual')
