@@ -187,35 +187,35 @@
 
 
 #landing-text-div {
-  width: 55%;
-  text-align: center;
-  background: rgba(0, 0, 0, .60);
-  padding: 25px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  left: 430px;
-  line-height: 25px;
-  margin-top: 450px;
-  transition-duration: 0.4s;
-  border-radius: 3px;
+    width: 55%;
+    text-align: center;
+    background: rgba(0, 0, 0, .20);
+    padding: 25px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    line-height: 25px;
+    margin-top: 23%;
+    transition-duration: 0.4s;
+    border-radius: 3px;
 }
 
 #landing-text-div:hover {
-  width: 55%;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.709);
-  padding: 25px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  line-height: 25px;
-  margin-top: 450px;
-  border-radius: 3px;
+    width: 55%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.709);
+    padding: 25px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    line-height: 25px;
+    margin-top: 450px;
+    border-radius: 3px;
+    margin-top: 23%;
 }
 
 #landing-text {
