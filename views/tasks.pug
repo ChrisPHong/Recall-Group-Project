@@ -5,15 +5,13 @@ include task-detail.pug
 block content
   +validationErrorSummary(errors)
   .errors-container
-  div(id='logoContainerHome')
-    img(src="/img/RECALL4.png", alt="logo" id='logo' class='home-page-image')
   div(class='top-display')
     div(class='first-box')
       div(class='create-task')
         include task-create-form
   div(class='main-display')
     div(class='second-box box')
-      p(class='column-titles') My Lists
+      p(class='column-titles' id='second-column-titles') My Lists
       include lists.pug
     div(class='third-box box')
         p(class='column-titles' id='task-title') To Do
@@ -32,5 +30,4 @@ block content
                 else
                   input(type='checkbox' name='completed' class='task-checkbox' id=`checkbox-${task.id}`)
             +editField(task)
-    div(class='fourth-box box')
-      p(class='column-titles')
+  div(id='footer')

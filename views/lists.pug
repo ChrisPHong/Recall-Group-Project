@@ -1,14 +1,14 @@
 include utils.pug
 block content
-  form(action="/lists", method="post" autocomplete='off')
+  form(action="/lists", method="post" autocomplete='off' id='lists-home')
     input(type="hidden" name="_csrf" value=csrfToken)
     //- label List Name:
-    input(type="text" name="name" placeholder='New List...' class='home-inputs')
+    input(type="text" name="name" placeholder='Create New List...' class='home-inputs')
     button(type="submit" class='home-buttons') Submit
     br
     .all-tasks-link
       a(href='/tasks' class='all-tasks-link-text') View all of My Tasks
-  ul
+  ul(id='list-display-home')
     each list in lists
       div(class='list-item div-container' id=`list-container-${list.id}`)
         li(class='lists' id=`name-${list.id}`)= list.name
