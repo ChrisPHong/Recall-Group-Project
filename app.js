@@ -14,6 +14,7 @@ const tasksRouter = require('./routes/tasks');
 const { restoreUser } = require('./auth');
 const listRouter = require('./routes/lists');
 const searchRouter = require('./routes/search');
+const aboutUsRouter = require('./routes/aboutUs')
 
 const app = express();
 // Bobby1!
@@ -49,6 +50,7 @@ app.use(loginRouter);
 app.use('/lists', listRouter);
 app.use('/tasks', tasksRouter);
 app.use('/search', searchRouter);
+app.use('/aboutUs', aboutUsRouter);
 
 app.use((req, res, next) => {
   const err = new Error('The requested page couldn\'t be found.');
