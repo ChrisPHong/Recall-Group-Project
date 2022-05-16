@@ -1,7 +1,7 @@
 # Recall
 Check out Recall here: [Recall Task App](https://recall-app.herokuapp.com/)
 
-Recall is a clone of the website RememberTheMilk, a task management website that allows users to create tasks and assign them to lists.  Our backend was built using PostgreSQL, Sequelize and Express. The frontend was developed using Pug HTML preprocessor.
+Recall is a clone of the website [RememberTheMilk](https://www.rememberthemilk.com/), a task management website that allows users to create tasks and assign them to lists.  Our backend was built using PostgreSQL, Sequelize and Express. The frontend was developed using Pug HTML preprocessor.
 
 ## Landing Page:
 ![landing-page view](/images/landing-page.png)
