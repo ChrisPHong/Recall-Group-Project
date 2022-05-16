@@ -31,22 +31,23 @@
 }
 
 #leftNav {
-  margin: 10px;
-  width: 110px;
-  position: relative;
-  right: 75px
+  width: 300px;
+
 }
 
+#registerbtn {
+  margin-left:10px
+}
 
 .loginbtn,
-.registerbtn {
+.registerbtn,
+.aboutusbtn {
   --c: no-repeat linear-gradient(#0000007b 0 0);
   background:
-    var(--c) calc(-101% + var(--p, 0%)) 100%,
-    var(--c) calc(201% - var(--p, 0%)) 0;
+  var(--c) calc(-101% + var(--p, 0%)) 100%,
+  var(--c) calc(201% - var(--p, 0%)) 0;
   background-size: 50.1% var(--p, .08em);
   transition: .3s var(--t, 0s), background-position .3s calc(.3s - var(--t, 0s));
-  margin: 5px;
   border-radius: 10px;
   padding: 10px;
   text-decoration: none;
@@ -67,11 +68,13 @@
 }
 
 .loginbtn:hover,
-.registerbtn:hover {
+.registerbtn:hover,
+.aboutusbtn:hover {
   --p: 101%;
   --t: 0.3s;
   color: #fff;
 }
+
 
 #callToAction {
   display: flex;
