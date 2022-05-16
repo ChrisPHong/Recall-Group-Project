@@ -120,8 +120,24 @@
     padding: 20px;
 }
 
+#ab1-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 #ab1-bio {
     padding: 20px;
+}
+
+#ab1-ghub {
+    text-decoration: none;
+    color: black;
+    background-color: rgb(174, 174, 174);
+    border: black solid 2px;
+    border-radius: 15px;
+    padding: 10px;
 }
 
 #aboutUs-chris {
@@ -166,8 +182,24 @@
     padding: 20px;
 }
 
+#ab2-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 #ab2-bio {
     padding: 20px;
+}
+
+#ab2-ghub {
+    text-decoration: none;
+    color: black;
+    background-color: rgb(174, 174, 174);
+    border: black solid 2px;
+    border-radius: 15px;
+    padding: 10px;
 }
 
 #aboutUs-patrick {
@@ -213,8 +245,24 @@
     width: 110px;
 }
 
+#ab3-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 #ab3-bio {
     padding: 20px;
+}
+
+#ab3-ghub {
+    text-decoration: none;
+    color: black;
+    background-color: rgb(174, 174, 174);
+    border: black solid 2px;
+    border-radius: 15px;
+    padding: 10px;
 }
 
 #aboutUs-walker {
@@ -259,6 +307,22 @@
     width: 110px;
 }
 
+#ab4-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 #ab4-bio {
     padding: 20px;
+}
+
+#ab4-ghub {
+    text-decoration: none;
+    color: black;
+    background-color: rgb(174, 174, 174);
+    border: black solid 2px;
+    border-radius: 15px;
+    padding: 10px;
 }
