@@ -17,3 +17,5 @@ module.exports = {
     seederStorage: 'sequelize',
   }
 };
+
+
